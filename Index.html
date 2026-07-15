@@ -540,19 +540,10 @@ h1, h2, h3, p { margin: 0; }
    * WHATSAPP_NUMBER'ı gerçek işletme numarasıyla
    * (ülke kodu dahil, sadece rakamlar) değiştirin.
    * ------------------------------------------- */
-  var WHATSAPP_NUMBER = '905462911590'; // PLACEHOLDER — yayına almadan önce değiştirin
+  var WHATSAPP_NUMBER = '905462911590';
 
-  var MESSAGE_A =
-    'Merhaba Yasemin Hanım.\n' +
-    'Instagram üzerinden Kök & Kanat atölyesini gördüm.\n' +
-    'Katılım hakkında bilgi almak istiyorum.';
-
-  function buildWhatsAppUrl(variant) {
-    var base = 'https://wa.me/' + WHATSAPP_NUMBER;
-    if (variant === 'a') {
-      return base + '?text=' + encodeURIComponent(MESSAGE_A);
-    }
-    return base; // variant "b" — önceden yazılmış mesaj olmadan sohbeti açar
+  function buildWhatsAppUrl() {
+    return 'https://wa.me/' + WHATSAPP_NUMBER; // önceden yazılmış mesaj yok — sohbet boş açılır
   }
 
   function initWhatsAppLinks() {
