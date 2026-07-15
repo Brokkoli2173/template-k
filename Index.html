@@ -265,7 +265,7 @@ h1, h2, h3, p { margin: 0; }
 
 /* About Yasemin */
 .about-grid { display: grid; gap: var(--space-4); align-items: center; }
-.about-media svg { border-radius: var(--radius); width: 100%; height: auto; }
+.about-media svg, .about-media img { border-radius: var(--radius); width: 100%; height: auto; }
 .about-title { color: var(--color-sage); font-weight: 600; margin: 0.4rem 0 var(--space-2); }
 .about-copy p + p { margin-top: var(--space-2); }
 @media (min-width: 800px) { .about-grid { grid-template-columns: 340px 1fr; } }
@@ -374,26 +374,10 @@ h1, h2, h3, p { margin: 0; }
     </div>
   </section>
 
-  <!-- KIMLER İÇİN -->
-  <section class="section who" id="kimler-icin">
-    <div class="wrap">
-      <p class="section-label">II. Kimler İçin</p>
-      <h2 class="section-title">Bu atölye, şu an bir eşikte duran kişiler için</h2>
-      <ul class="who-list">
-        <li>Kariyerinde köklü bir değişim yapmayı düşünenler</li>
-        <li>Emekliliğe hazırlanan ya da yeni emekli olanlar</li>
-        <li>Şehir veya ev değiştirenler</li>
-        <li>Bir ilişki ya da uzun bir dönemi geride bırakanlar</li>
-        <li>Çocukları evden ayrılan, "boş yuva" dönemini yaşayanlar</li>
-        <li>Adını henüz koyamadığı yeni bir arayış içinde olanlar</li>
-      </ul>
-    </div>
-  </section>
-
   <!-- JOURNEY -->
   <section class="section journey" id="atolye">
     <div class="wrap">
-      <p class="section-label">III. Atölye Yolculuğu</p>
+      <p class="section-label">II. Atölye Yolculuğu</p>
       <h2 class="section-title">Altı buluşma, tek bir geçiş</h2>
       <ol class="stations">
         <li class="station">
@@ -446,16 +430,10 @@ h1, h2, h3, p { margin: 0; }
   <section class="section about" id="yasemin">
     <div class="wrap about-grid">
       <div class="about-media">
-        <!-- Placeholder portrait — gerçek fotoğraf eklendiğinde bu svg bloğunu <img> ile değiştirin -->
-        <svg class="media" viewBox="0 0 480 600" role="img" aria-label="Yasemin Hanım'ın portresi (yer tutucu görsel)">
-          <rect width="480" height="600" fill="#DCD3C0"/>
-          <circle cx="240" cy="230" r="90" fill="#EFE7DA"/>
-          <path d="M110 560 C 110 430, 170 360, 240 360 C 310 360, 370 430, 370 560 Z" fill="#EFE7DA"/>
-          <text x="240" y="580" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#6E7A5E">Fotoğraf yakında eklenecek</text>
-        </svg>
+        <img src="logo.heic" alt="Yasemin Hanım'ın portresi" loading="lazy">
       </div>
       <div class="about-copy">
-        <p class="section-label">IV. Rehberiniz</p>
+        <p class="section-label">III. Rehberiniz</p>
         <h2 class="section-title">Yasemin Hanım</h2>
         <p class="about-title">Eğitim Bilimci &amp; Kök &amp; Kanat'ın Kurucusu</p>
         <p>Yıllarını yetişkin eğitimine ve öğrenme süreçlerine adayan Yasemin Hanım, kendi hayatındaki köklü bir geçişin ardından fark etti: insanların çoğu, bir bölümü kapatmadan diğerine geçmeye çalışıyor.</p>
@@ -467,7 +445,7 @@ h1, h2, h3, p { margin: 0; }
   <!-- DETAILS -->
   <section class="section details" id="detaylar">
     <div class="wrap">
-      <p class="section-label">V. Detaylar</p>
+      <p class="section-label">IV. Detaylar</p>
       <div class="details-grid">
         <div class="detail-item">
           <h3>Tarih</h3>
@@ -492,7 +470,7 @@ h1, h2, h3, p { margin: 0; }
   <!-- FAQ -->
   <section class="section faq" id="sss">
     <div class="wrap">
-      <p class="section-label">VI. Sık Sorulan Sorular</p>
+      <p class="section-label">V. Sık Sorulan Sorular</p>
       <div class="faq-list">
         <details class="faq-item">
           <summary>Bu bir terapi süreci mi?</summary>
@@ -562,7 +540,7 @@ h1, h2, h3, p { margin: 0; }
    * WHATSAPP_NUMBER'ı gerçek işletme numarasıyla
    * (ülke kodu dahil, sadece rakamlar) değiştirin.
    * ------------------------------------------- */
-  var WHATSAPP_NUMBER = '+905462911590'; // PLACEHOLDER — yayına almadan önce değiştirin
+  var WHATSAPP_NUMBER = '905XXXXXXXXX'; // PLACEHOLDER — yayına almadan önce değiştirin
 
   var MESSAGE_A =
     'Merhaba Yasemin Hanım.\n' +
