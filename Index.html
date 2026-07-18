@@ -1,706 +1,1365 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kök & Kanat — Yeni Bir Bölüme Geçiş Atölyesi</title>
-<meta name="description" content="Kök & Kanat, İstanbul Caferağa Medresesi'nde altı hafta süren, hayatın yeni bir bölümüne rehberli geçiş atölyesi. 20 Eylül 2026'da başlıyor.">
+<title>Melis Bulut — Hochzeitssängerin</title>
+<meta name="description" content="Melis Bulut begleitet eure Hochzeit mit Live-Gesang, der genau auf euren Tag abgestimmt ist. Termine jetzt per WhatsApp anfragen.">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Kök & Kanat — Yeni Bir Bölüme Geçiş Atölyesi">
-<meta property="og:description" content="Altı haftalık rehberli öz-yansıma atölyesi. İstanbul, Caferağa Medresesi. 20 Eylül 2026.">
+<meta property="og:title" content="Melis Bulut — Hochzeitssängerin">
+<meta property="og:description" content="Live-Musik, die den Moment trägt. Erfahrt mehr über Melis Bulut und sichert euch euer Datum.">
 <meta property="og:type" content="website">
-<!-- PLACEHOLDER: canlıya alınca gerçek bir görsel URL'i buraya ekleyin (mutlak URL olmalı) -->
-<meta property="og:image" content="">
-<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="assets/images/og-cover.jpg">
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kök & Kanat — Yeni Bir Bölüme Geçiş Atölyesi">
-<meta name="twitter:description" content="Altı haftalık rehberli öz-yansıma atölyesi. İstanbul, Caferağa Medresesi.">
-
-<!-- Favicon: inline SVG, no external file needed -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232B2418'/%3E%3Cpath d='M32 14 C 24 20, 20 28, 20 36 C 20 44, 25 50, 32 50' stroke='%23A85C3B' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M32 14 C 40 20, 44 28, 44 36 C 44 44, 39 50, 32 50' stroke='%23B08D4F' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M32 50 L32 20' stroke='%23EFE7DA' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-
+<!-- Fonts: Fraunces (display, warm serif with real personality) + Inter (clean utility body) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 /* ==========================================================================
-   KÖK & KANAT — Editorial Luxury (single-file demo build)
-   Premium magazine-inspired concept. Generous whitespace, restrained serif
-   display type, hairline rules, asymmetric editorial grid.
+   MELIS BULUT — DESIGN SYSTEM
+   Mobile-first. Every value derives from the token set below.
    ========================================================================== */
 
 :root {
-  --color-paper: #F1EAD9;
-  --color-paper-alt: #E7DEC9;
-  --color-ink: #2B2418;
-  --color-clay: #A85C3B;
-  --color-sage: #6E7A5E;
-  --color-gold: #B08D4F;
-  --color-line: rgba(43, 36, 24, 0.14);
+  /* ---- Color ---- */
+  --ink: #14171c;          /* primary dark background — warm charcoal, not pure black */
+  --deep: #0a0c0f;         /* deepest tone, hero overlay */
+  --ivory: #f7f4ee;        /* primary light background / dark-on-light text */
+  --ivory-dim: #ece7dc;    /* subtle secondary light surface */
+  --gold: #c9a962;         /* signature accent — candlelight, used sparingly */
+  --gold-soft: #d9c48f;    /* lighter accent for hovers */
+  --stone: #8b8578;        /* secondary / muted text on light */
+  --stone-dark: #9a978d;   /* secondary / muted text on dark */
+  --line-on-dark: rgba(247, 244, 238, 0.14);
+  --line-on-light: rgba(20, 23, 28, 0.1);
 
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* ---- Type ---- */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --wrap-width: 1120px;
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 1.75rem;
-  --space-4: 2.75rem;
-  --space-5: 4.5rem;
-  --space-6: 7rem;
+  /* ---- Spacing scale (fluid) ---- */
+  --space-xs: clamp(0.5rem, 0.45rem + 0.3vw, 0.75rem);
+  --space-sm: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+  --space-md: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+  --space-lg: clamp(3rem, 2.4rem + 2.5vw, 5rem);
+  --space-xl: clamp(4.5rem, 3.5rem + 4vw, 8rem);
+  --space-2xl: clamp(6rem, 4.5rem + 6vw, 11rem);
 
-  --radius: 2px;
+  /* ---- Layout ---- */
+  --content-max: 1180px;
+  --text-max: 640px;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+
+  /* ---- Motion ---- */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.6s;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
+/* ---- Reset ---- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
-  margin: 0;
-  background: var(--color-paper);
-  color: var(--color-ink);
   font-family: var(--font-body);
-  font-size: 16px;
+  background: var(--ivory);
+  color: var(--ink);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-img, svg.media { max-width: 100%; display: block; height: auto; }
-a { color: inherit; }
-ul, ol { margin: 0; padding: 0; list-style: none; }
-h1, h2, h3, p { margin: 0; }
+img { max-width: 100%; display: block; }
 
-.wrap {
-  max-width: var(--wrap-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
+a { color: inherit; text-decoration: none; }
 
+ul, ol { list-style: none; }
+
+/* ---- Accessibility ---- */
 .skip-link {
   position: absolute;
   left: -9999px;
   top: 0;
-  background: var(--color-ink);
-  color: var(--color-paper);
-  padding: 0.75rem 1.25rem;
-  z-index: 100;
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 1em 1.5em;
+  z-index: 1000;
 }
-.skip-link:focus { left: 1rem; top: 1rem; }
+.skip-link:focus {
+  left: var(--space-sm);
+  top: var(--space-sm);
+}
 
 :focus-visible {
-  outline: 2px solid var(--color-clay);
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
 
-/* Header */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(241, 234, 217, 0.9);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s var(--ease);
-}
-.site-header.is-scrolled { border-bottom-color: var(--color-line); }
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
 
-.header-inner {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding-top: 1.1rem;
-  padding-bottom: 1.1rem;
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-sm);
 }
-
-.logo {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 1.15rem;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.logo-amp { color: var(--color-clay); font-style: italic; }
-
-.main-nav { display: none; gap: var(--space-4); margin-left: var(--space-3); font-size: 0.9rem; }
-.main-nav a { text-decoration: none; opacity: 0.8; }
-.main-nav a:hover { opacity: 1; }
-
-.header-cta { display: none; margin-left: auto; white-space: nowrap; }
-
-.nav-toggle {
-  margin-left: auto;
-  width: 36px; height: 28px;
-  background: none; border: none;
-  display: flex; flex-direction: column; justify-content: space-between;
-  cursor: pointer; padding: 2px;
-}
-.nav-toggle span {
-  display: block; height: 2px; background: var(--color-ink); border-radius: 2px;
-  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
-}
-.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(13px) rotate(45deg); }
-.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-13px) rotate(-45deg); }
-
-.mobile-nav {
-  display: flex; flex-direction: column; gap: var(--space-2);
-  padding: 0 1.5rem; max-height: 0; overflow: hidden;
-  transition: max-height 0.35s var(--ease), padding 0.35s var(--ease);
-}
-.mobile-nav.is-open { max-height: 320px; padding: 0 1.5rem var(--space-3); }
-.mobile-nav a { text-decoration: none; padding: 0.4rem 0; }
-
-@media (min-width: 900px) {
-  .main-nav { display: flex; }
-  .header-cta { display: inline-flex; }
-  .nav-toggle { display: none; }
-  .mobile-nav { display: none; }
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  padding: 0.85rem 1.6rem; border-radius: var(--radius);
-  font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
-  text-decoration: none; border: 1px solid transparent;
-  transition: transform 0.2s var(--ease), background-color 0.2s var(--ease), color 0.2s var(--ease);
-}
-.btn-primary { background: var(--color-ink); color: var(--color-paper); }
-.btn-primary:hover { background: var(--color-clay); }
-.btn-ghost {
-  background: transparent; border-color: var(--color-ink); color: var(--color-ink);
-  padding: 0.6rem 1.3rem; font-size: 0.85rem;
-}
-.btn-ghost:hover { background: var(--color-ink); color: var(--color-paper); }
-.btn-large { padding: 1.1rem 2.2rem; font-size: 1rem; }
-.btn-link {
-  font-size: 0.9rem; text-decoration: underline; text-underline-offset: 3px;
-  text-decoration-color: var(--color-clay);
-}
-
-/* Section rhythm */
-.section {
-  padding: var(--space-6) 0;
-  opacity: 0; transform: translateY(16px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-}
-.section.is-visible { opacity: 1; transform: none; }
-
-.section-label {
-  display: flex; align-items: center; gap: 0.9rem;
-  margin-bottom: var(--space-3);
-}
-.section-num {
-  font-family: var(--font-display); font-style: italic; font-weight: 500;
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem); color: var(--color-clay); line-height: 1;
-}
-.section-label-line {
-  flex: 0 0 2.5rem; height: 1px; background: var(--color-clay); opacity: 0.55;
-}
-.section-label-text {
-  font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--color-sage);
-}
+.eyebrow--center { text-align: center; }
 
 .section-title {
-  font-family: var(--font-display); font-weight: 300;
-  font-size: clamp(1.75rem, 3vw, 2.6rem); line-height: 1.2; max-width: 20ch;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 1.5rem + 2.2vw, 3.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+.section-title em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold);
+}
+.section-title--center { text-align: center; max-width: 760px; margin-left: auto; margin-right: auto; }
+
+.body-text {
+  font-size: 1.05rem;
+  color: var(--stone);
+  max-width: var(--text-max);
+}
+.body-text--center { text-align: center; margin-left: auto; margin-right: auto; }
+.body-text--wide { max-width: 700px; }
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 1em 2em;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-md);
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  border: none;
+  cursor: pointer;
 }
 
-/* Ornamental dividers between sections — echoes the root/wing mark */
-.ornament {
-  display: flex; align-items: center; justify-content: center; gap: var(--space-2);
-  max-width: 260px; margin: 0 auto; padding: 0 1.5rem; color: var(--color-gold);
+.btn--primary {
+  background: var(--gold);
+  color: var(--ink);
+  box-shadow: 0 8px 24px -8px rgba(201, 169, 98, 0.5);
 }
-.ornament-line { flex: 1; height: 1px; background: currentColor; opacity: 0.4; }
-.ornament-icon { flex-shrink: 0; width: 26px; height: 26px; opacity: 0.8; }
-
-/* Corner-bracket frame used on the portrait image */
-.corner-frame { position: relative; }
-.corner-frame::before, .corner-frame::after,
-.corner-frame > .corner-tr, .corner-frame > .corner-bl {
-  content: ''; position: absolute; width: 26px; height: 26px; border: 1px solid var(--color-gold);
+.btn--primary:hover {
+  background: var(--gold-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -8px rgba(201, 169, 98, 0.6);
 }
-.corner-frame::before { top: -10px; left: -10px; border-right: none; border-bottom: none; }
-.corner-frame::after { bottom: -10px; right: -10px; border-left: none; border-top: none; }
+.btn--primary:active { transform: translateY(0); }
 
-/* Oversized decorative quotation mark beside the pull-quote */
-.quote-mark {
-  font-family: var(--font-display); font-style: italic; color: var(--color-gold);
-  font-size: 4.5rem; line-height: 0.6; opacity: 0.55; display: block; margin-bottom: 0.25rem;
+.btn--large {
+  padding: 1.15em 2.6em;
+  font-size: 1.05rem;
 }
 
-/* Hero */
-.hero { padding: var(--space-5) 0 var(--space-6); border-bottom: 1px solid var(--color-line); }
-.hero-grid { max-width: 780px; }
-.eyebrow {
-  font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--color-clay); margin-bottom: var(--space-3);
-}
-.hero-title {
-  font-family: var(--font-display); font-weight: 300;
-  font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.08; letter-spacing: -0.01em;
-}
-.hero-lede { margin-top: var(--space-3); font-size: 1.15rem; max-width: 46ch; color: rgba(43, 36, 24, 0.82); }
-.hero-actions { margin-top: var(--space-4); display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+/* ==========================================================================
+   NAV
+   ========================================================================== */
 
-/* Intro */
-.intro-grid { display: grid; gap: var(--space-4); }
-.pull-quote {
-  font-family: var(--font-display); font-style: italic; font-weight: 400;
-  font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.4; color: var(--color-clay);
-  border-left: 2px solid var(--color-clay); padding-left: var(--space-3); margin-bottom: var(--space-3);
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: var(--space-sm) var(--space-md);
+  transition: background var(--dur) var(--ease), backdrop-filter var(--dur) var(--ease);
 }
-.intro-copy p + p { margin-top: var(--space-2); }
-@media (min-width: 900px) { .intro-grid { grid-template-columns: 220px 1fr; align-items: start; } }
-
-/* Who list */
-.who-list { margin-top: var(--space-4); display: grid; gap: var(--space-2) var(--space-4); }
-.who-list li { padding: var(--space-2) 0; border-bottom: 1px solid var(--color-line); font-size: 1.05rem; }
-@media (min-width: 700px) { .who-list { grid-template-columns: 1fr 1fr; } }
-
-/* Journey / stations */
-.stations { margin-top: var(--space-4); display: grid; gap: var(--space-3); }
-.station {
-  padding: var(--space-3) 0; border-top: 1px solid var(--color-line);
-  display: grid; grid-template-columns: 3rem 1fr; gap: var(--space-2);
-  opacity: 0; transform: translateY(12px);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+.nav.is-scrolled {
+  background: rgba(20, 23, 28, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
-.station.is-visible { opacity: 1; transform: none; }
-.station-no { font-family: var(--font-display); font-style: italic; font-size: 1.4rem; color: var(--color-clay); }
-.station h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; margin-bottom: 0.35rem; }
-.station p { max-width: 60ch; color: rgba(43, 36, 24, 0.82); }
-.station-signature {
-  background: var(--color-paper-alt); margin: 0 calc(var(--space-3) * -1);
-  padding: var(--space-3); border-top-color: var(--color-gold);
+.nav__inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.signature-tag {
-  display: inline-block; font-family: var(--font-body); font-size: 0.68rem;
-  letter-spacing: 0.1em; text-transform: uppercase; background: var(--color-gold);
-  color: var(--color-paper); padding: 0.2rem 0.5rem; border-radius: var(--radius);
-  vertical-align: middle; margin-left: 0.6rem;
+.nav__name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ivory);
 }
-@media (min-width: 700px) {
-  .stations { grid-template-columns: 1fr 1fr; gap: var(--space-4) var(--space-4); }
-  .station { border-top: none; padding: 0; }
-  .station-signature { grid-column: 1 / -1; margin: 0; }
+.nav__cta {
+  display: none; /* revealed on desktop; mobile uses sticky floating CTA instead */
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6em 1.3em;
+  border: 1px solid var(--line-on-dark);
+  border-radius: var(--radius-md);
+  color: var(--ivory);
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.nav__cta:hover {
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
-/* About Yasemin */
-.about-grid { display: grid; gap: var(--space-4); align-items: center; }
-.about-media svg, .about-media img { border-radius: var(--radius); width: 100%; height: auto; }
-.about-title { color: var(--color-sage); font-weight: 600; margin: 0.4rem 0 var(--space-2); }
-.about-copy p + p { margin-top: var(--space-2); }
-@media (min-width: 800px) { .about-grid { grid-template-columns: 340px 1fr; } }
-
-/* Details + price */
-.details-grid { margin-top: var(--space-4); display: grid; gap: var(--space-3); }
-.detail-item { padding: var(--space-3); border: 1px solid var(--color-line); border-radius: var(--radius); }
-.detail-item h3 {
-  font-family: var(--font-display); font-size: 1.05rem; font-weight: 500;
-  margin-bottom: 0.4rem; color: var(--color-clay);
+@media (min-width: 860px) {
+  .nav__cta { display: inline-flex; }
 }
-.price { font-size: 1.4rem; font-family: var(--font-display); }
-@media (min-width: 700px) { .details-grid { grid-template-columns: repeat(4, 1fr); } }
 
-/* FAQ */
-.faq-list { margin-top: var(--space-4); max-width: 760px; }
-.faq-item { border-bottom: 1px solid var(--color-line); padding: var(--space-2) 0; }
-.faq-item summary {
-  cursor: pointer; font-family: var(--font-display); font-size: 1.1rem;
-  font-weight: 500; padding: 0.4rem 0; list-style: none;
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--deep);
 }
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after { content: '+'; float: right; color: var(--color-clay); }
-.faq-item[open] summary::after { content: '–'; }
-.faq-item p { margin-top: 0.6rem; color: rgba(43, 36, 24, 0.82); max-width: 60ch; }
 
-/* Final CTA */
-.final-cta { text-align: center; background: var(--color-ink); color: var(--color-paper); border-radius: var(--radius); }
-.final-cta .section-title { color: var(--color-paper); margin: 0 auto var(--space-2); }
-.final-cta p { color: rgba(241, 234, 217, 0.78); margin-bottom: var(--space-3); }
-.final-cta .btn-primary { background: var(--color-clay); color: var(--color-paper); }
-.final-cta .btn-primary:hover { background: var(--color-gold); }
-
-/* Footer */
-.site-footer { border-top: 1px solid var(--color-line); padding: var(--space-5) 0 var(--space-3); font-size: 0.9rem; }
-.footer-grid { display: grid; gap: var(--space-4); }
-.footer-logo { font-size: 1.1rem; margin-bottom: 0.3rem; }
-.footer-note { color: var(--color-sage); }
-.footer-legal p { margin: 0.2rem 0; color: rgba(43, 36, 24, 0.75); }
-.footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
-.footer-links a { text-decoration: none; opacity: 0.85; }
-.footer-links a:hover { opacity: 1; text-decoration: underline; }
-.footer-copy { text-align: center; margin-top: var(--space-4); color: rgba(43, 36, 24, 0.6); font-size: 0.8rem; }
-@media (min-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr; } }
-
-/* Mobile sticky CTA */
-.mobile-sticky-cta {
-  position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 60; text-align: center;
-  background: var(--color-ink); color: var(--color-paper); padding: 0.9rem; border-radius: var(--radius);
-  text-decoration: none; font-weight: 600; box-shadow: 0 8px 24px rgba(43, 36, 24, 0.25);
+.hero__media {
+  position: absolute;
+  inset: 0;
 }
-@media (min-width: 900px) { .mobile-sticky-cta { display: none; } }
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%; /* keep face clear of the headline's lower line */
+  filter: saturate(0.78) brightness(0.88) contrast(1.06);
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  /* Mobile: text still spans full width, anchored to the bottom — a simple vertical wash is enough. */
+  background: linear-gradient(0deg, rgba(10,12,15,0.9) 0%, rgba(10,12,15,0.45) 45%, rgba(10,12,15,0.1) 75%, transparent 100%);
+}
+
+@media (min-width: 860px) {
+  .hero__scrim {
+    /* Desktop: text moves to the right, so the dark wash mirrors to sit behind it —
+       the subject on the left keeps clean, natural light instead of being dimmed for no reason. */
+    background:
+      linear-gradient(245deg, rgba(10,12,15,0.9) 0%, rgba(10,12,15,0.68) 30%, rgba(10,12,15,0.3) 55%, rgba(10,12,15,0.04) 78%),
+      linear-gradient(0deg, rgba(10,12,15,0.55) 0%, rgba(10,12,15,0.2) 40%, transparent 70%);
+  }
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--content-max);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-md) var(--space-2xl);
+  color: var(--ivory);
+}
+
+.hero .eyebrow { color: var(--gold-soft); }
+
+.hero__headline {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 1.8rem + 4vw, 5rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+  text-shadow: 0 2px 24px rgba(10, 12, 15, 0.35);
+}
+.hero__headline em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.hero__sub {
+  font-size: 1.1rem;
+  color: rgba(247, 244, 238, 0.78);
+  max-width: 480px;
+  margin-bottom: var(--space-md);
+}
+
+.hero__note {
+  margin-top: var(--space-xs);
+  font-size: 0.82rem;
+  color: rgba(247, 244, 238, 0.5);
+}
+
+@media (min-width: 860px) {
+  /* Desktop: subject stands left-of-center in the photo, so the text column moves right
+     to sit on open ground instead of competing with her face. Mobile keeps the original
+     full-width, bottom-anchored layout since the crop there is mostly vertical anyway. */
+  .hero__content {
+    text-align: right;
+  }
+  .hero__headline {
+    max-width: 620px;
+    margin-left: auto;
+  }
+  .hero__sub {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .hero__image {
+    object-position: 22% 22%; /* keep the subject visible on the left, clear of the text column */
+  }
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: var(--space-sm);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 48px;
+  z-index: 2;
+  overflow: hidden;
+}
+.scroll-hint span {
+  display: block;
+  width: 100%;
+  height: 40%;
+  background: var(--gold);
+  animation: scrollHint 2.2s var(--ease) infinite;
+}
+@keyframes scrollHint {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(250%); }
+}
+
+/* ==========================================================================
+   SIGNATURE WAVEFORM DIVIDER
+   ========================================================================== */
+
+.wave-divider {
+  background: var(--ink);
+  line-height: 0;
+  padding-top: var(--space-md);
+}
+.wave-divider--flip { transform: scaleY(-1); background: var(--ivory); }
+.wave-svg { width: 100%; height: 48px; display: block; }
+.wave-path {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  transition: stroke-dashoffset 1.4s var(--ease);
+}
+.wave-path.is-visible { stroke-dashoffset: 0; }
+
+/* ==========================================================================
+   PROOF SECTION
+   ========================================================================== */
+
+.proof {
+  background: var(--ink);
+  padding-bottom: var(--space-xl);
+}
+.proof__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.proof__image-placeholder {
+  position: absolute;
+  inset: 0;
+  /* Replace with a real photo/video moment: assets/images/proof.jpg */
+  background: linear-gradient(135deg, #2a2f3a 0%, #1c2029 50%, #14171c 100%);
+}
+.proof__caption {
+  max-width: 640px;
+  margin: var(--space-lg) auto 0;
+  padding: 0 var(--space-md);
+  text-align: center;
+}
+.proof__quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem);
+  color: var(--ivory);
+  line-height: 1.45;
+}
+.proof__attribution {
+  margin-top: var(--space-sm);
+  font-size: 0.85rem;
+  color: var(--stone-dark);
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   ABOUT
+   ========================================================================== */
+
+.about {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-md);
+  display: grid;
+  gap: var(--space-lg);
+}
+.about__portrait {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+}
+.about__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%; /* photo is taller than the 4:5 crop, keep face near top-third */
+}
+.stat-row {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+.stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--gold);
+}
+.stat-label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--stone);
+  margin-top: 0.2em;
+}
+
+@media (min-width: 860px) {
+  .about {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+  }
+}
+
+/* ==========================================================================
+   EXPERIENCE — asymmetric, no card containers
+   ========================================================================== */
+
+.experience {
+  background: var(--ivory-dim);
+  padding: var(--space-2xl) var(--space-md);
+}
+.experience__intro {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+.experience__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 1.5rem + 2.6vw, 3.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  max-width: 780px;
+  margin-bottom: var(--space-md);
+}
+.experience__title em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold);
+}
+.experience .body-text { margin-bottom: 0; }
+
+/* ---- Shared numbered-list system (used by Experience + Process) ---- */
+.numbered-list {
+  max-width: var(--content-max);
+  margin: var(--space-xl) auto 0;
+  display: flex;
+  flex-direction: column;
+}
+.numbered-list__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--line-on-light);
+}
+.numbered-list__item:last-child { border-bottom: 1px solid var(--line-on-light); }
+.numbered-list__num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem);
+  color: var(--gold);
+  line-height: 1;
+}
+.numbered-list__body h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin-bottom: 0.4em;
+}
+.numbered-list__body p {
+  color: var(--stone);
+  font-size: 0.98rem;
+  max-width: 480px;
+}
+
+@media (min-width: 860px) {
+  .numbered-list__item {
+    grid-template-columns: 140px 1fr;
+    align-items: baseline;
+  }
+}
+.numbered-list--compact {
+  max-width: 760px;
+}
+
+/* ==========================================================================
+   REPERTOIRE / AUDIO PLAYER
+   ========================================================================== */
+
+.repertoire {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-md);
+}
+
+.audio-player {
+  margin-top: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--ink);
+  border-radius: var(--radius-md);
+  max-width: 560px;
+}
+.audio-player__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  background: none;
+  border: none;
+  color: var(--ivory);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.audio-player__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 0.8rem;
+}
+.audio-player__track {
+  flex: 1;
+  height: 3px;
+  background: var(--line-on-dark);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.audio-player__progress {
+  height: 100%;
+  width: 0%;
+  background: var(--gold);
+  transition: width 0.1s linear;
+}
+
+.genre-list {
+  margin-top: var(--space-lg);
+  font-size: 0.95rem;
+  color: var(--stone);
+  letter-spacing: 0.01em;
+}
+.genre-list span { color: var(--gold); margin: 0 0.3em; }
+
+/* ==========================================================================
+   TESTIMONIALS — single large rotating quote, no cards
+   ========================================================================== */
+
+.testimonials {
+  background: var(--ink);
+  padding: var(--space-2xl) var(--space-md);
+  color: var(--ivory);
+  text-align: center;
+}
+.testimonials__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone-dark);
+  margin-bottom: var(--space-lg);
+}
+
+.testimonial-slider {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+  min-height: 9em; /* reserves space so slide-swap never shifts layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.testimonial-slider__mark {
+  position: absolute;
+  top: -0.3em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 7rem;
+  color: var(--gold);
+  opacity: 0.16;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.testimonial-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  pointer-events: none;
+}
+.testimonial-slide.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+}
+.testimonial-slide p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 1.05rem + 1.1vw, 2rem);
+  line-height: 1.5;
+  max-width: 680px;
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: var(--space-lg);
+}
+.testimonial-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--line-on-dark);
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.testimonial-dot.is-active {
+  background: var(--gold);
+  transform: scale(1.3);
+}
+
+/* ==========================================================================
+   MANIFESTO — standalone statement section, own breathing room
+   ========================================================================== */
+
+.manifesto {
+  background: var(--deep);
+  padding: var(--space-2xl) var(--space-md);
+}
+.manifesto__text {
+  max-width: 840px;
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 1.2rem + 2vw, 2.6rem);
+  line-height: 1.4;
+  color: var(--stone-dark);
+  text-align: center;
+}
+.manifesto__text em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ivory);
+}
+
+/* ==========================================================================
+   PROCESS
+   ========================================================================== */
+
+.process {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-md);
+}
+.process__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 1.4rem + 2vw, 2.8rem);
+  line-height: 1.15;
+  margin-bottom: var(--space-sm);
+}
+.process .btn {
+  margin-top: var(--space-lg);
+}
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+
+.faq {
+  background: var(--ivory-dim);
+  padding: var(--space-2xl) var(--space-md);
+}
+.faq__list {
+  max-width: 760px;
+  margin: var(--space-xl) auto 0;
+}
+.faq__item {
+  border-bottom: 1px solid var(--line-on-light);
+  padding: var(--space-sm) 0;
+}
+.faq__item summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: "+";
+  font-size: 1.3rem;
+  color: var(--gold);
+  transition: transform var(--dur) var(--ease);
+  flex-shrink: 0;
+  margin-left: var(--space-sm);
+}
+.faq__item[open] summary::after { transform: rotate(45deg); }
+.faq__item p {
+  margin-top: var(--space-sm);
+  color: var(--stone);
+  font-size: 0.95rem;
+  max-width: 640px;
+}
+
+/* ==========================================================================
+   FINAL CTA
+   ========================================================================== */
+
+.final-cta {
+  background: var(--deep);
+  color: var(--ivory);
+  text-align: center;
+  padding: var(--space-2xl) var(--space-md);
+}
+.final-cta__headline {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 1.6rem + 2.5vw, 3.4rem);
+  line-height: 1.15;
+  margin-bottom: var(--space-sm);
+}
+.final-cta__headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+.final-cta__sub {
+  color: var(--stone-dark);
+  margin-bottom: var(--space-lg);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.footer {
+  background: var(--ink);
+  color: var(--stone-dark);
+  padding: var(--space-lg) var(--space-md) calc(var(--space-lg) + 70px);
+}
+.footer__inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  text-align: center;
+}
+.footer__name {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--ivory);
+  font-size: 1.2rem;
+}
+.footer__tagline {
+  margin-top: 0.3em;
+  font-size: 0.85rem;
+}
+.footer__links {
+  margin-top: var(--space-md);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  font-size: 0.85rem;
+}
+.footer__links a { transition: color var(--dur) var(--ease); }
+.footer__links a:hover { color: var(--gold); }
+.footer__legal {
+  margin-top: var(--space-md);
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+@media (min-width: 860px) {
+  .footer { padding-bottom: var(--space-lg); }
+}
+
+/* ==========================================================================
+   STICKY MOBILE WHATSAPP CTA
+   ========================================================================== */
+
+.sticky-cta {
+  position: fixed;
+  bottom: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 200;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 28px -6px rgba(0,0,0,0.35);
+  transition: transform var(--dur) var(--ease);
+}
+.sticky-cta:hover { transform: scale(1.06); }
+
+@media (min-width: 860px) {
+  .sticky-cta { display: none; } /* desktop uses the nav CTA instead */
+}
+
+/* ==========================================================================
+   SCROLL-REVEAL UTILITY (applied via JS)
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 </style>
 </head>
 <body>
 
-<a class="skip-link" href="#ana-icerik">İçeriğe geç</a>
+<!-- ============ SKIP LINK (Accessibility) ============ -->
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-<header class="site-header" data-header>
-  <div class="wrap header-inner">
-    <a href="#" class="logo">Kök <span class="logo-amp">&amp;</span> Kanat</a>
-    <nav class="main-nav" aria-label="Ana menü">
-      <a href="#atolye">Atölye</a>
-      <a href="#yasemin">Yasemin Hanım</a>
-      <a href="#detaylar">Detaylar</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <a class="btn btn-ghost header-cta" data-wa="a" href="#">WhatsApp</a>
-    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Menüyü aç">
-      <span></span><span></span><span></span>
-    </button>
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__name">Melis Bulut</a>
+    <a
+      class="nav__cta"
+      href="https://wa.me/491234567890?text=Hallo%20Melis%2C%20wir%20planen%20unsere%20Hochzeit%20und%20würden%20gerne%20mit%20dir%20sprechen."
+      target="_blank"
+      rel="noopener"
+    >
+      Verfügbarkeit prüfen
+    </a>
   </div>
-  <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobil menü">
-    <a href="#atolye">Atölye</a>
-    <a href="#yasemin">Yasemin Hanım</a>
-    <a href="#detaylar">Detaylar</a>
-    <a href="#faq">FAQ</a>
-    <a class="btn btn-primary" data-wa="a" href="#">WhatsApp'tan Yazın</a>
-  </nav>
 </header>
 
-<main id="ana-icerik">
+<main id="main">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <p class="eyebrow">Altı Haftalık Rehberli Atölye · İstanbul</p>
-      <h1 class="hero-title">Köklerinizi bilmeden<br>kanat açılmaz.</h1>
-      <p class="hero-lede">Hayatın bir bölümünü kapatıp yenisini açarken, bu geçişe zaman ve dikkat ayırmak için tasarlanmış, altı buluşmalık bir öz-yansıma atölyesi.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" data-wa="a" href="#">WhatsApp'tan Bilgi Alın</a>
-        <a class="btn-link" href="#atolye">Atölyeyi keşfedin ↓</a>
-      </div>
+  <!-- ============ 1. HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero__media" aria-hidden="true">
+      <img class="hero__image" src="assets/images/hero.jpg" alt="" loading="eager" fetchpriority="high">
+      <div class="hero__scrim"></div>
+    </div>
+
+    <div class="hero__content">
+      <p class="eyebrow">Live-Gesang für eure Hochzeit</p>
+      <h1 class="hero__headline">
+        Der Moment,<br>
+        <em>in dem alles<br>
+        andere still wird.</em>
+      </h1>
+      <p class="hero__sub">
+        Melis Bulut begleitet euren Tag mit Musik, die für genau diesen einen
+        Moment gemacht ist — nicht für irgendeinen.
+      </p>
+      <a
+        class="btn btn--primary"
+        href="https://wa.me/491234567890?text=Hallo%20Melis%2C%20wir%20planen%20unsere%20Hochzeit%20und%20würden%20gerne%20mit%20dir%20sprechen."
+        target="_blank"
+        rel="noopener"
+      >
+        Termin per WhatsApp anfragen
+      </a>
+      <p class="hero__note">Antwort meist innerhalb eines Tages</p>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span></span>
     </div>
   </section>
 
-  <div class="ornament" aria-hidden="true">
-    <span class="ornament-line"></span>
-    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
-      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <!-- Signature waveform divider — drawn on scroll, echoes "her voice" -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none" class="wave-svg">
+      <path class="wave-path" d="M0,40 C100,10 200,70 300,40 C400,10 500,70 600,40 C700,10 800,70 900,40 C1000,10 1100,70 1200,40" />
     </svg>
-    <span class="ornament-line"></span>
   </div>
 
-  <!-- INTRO -->
-  <section class="section intro" id="giris">
-    <div class="wrap intro-grid">
-      <p class="section-label"><span class="section-num">I</span><span class="section-label-line" aria-hidden="true"></span><span class="section-label-text">Giriş</span></p>
-      <div class="intro-copy">
-        <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-        <p class="pull-quote">Bazı bölümler sessizce biter. Onlara doğru bir veda söylemeden, yenisine başlamak zorlaşır.</p>
-        <p>Kök &amp; Kanat bir terapi programı değildir. Kariyer değişimi, emeklilik, taşınma ya da hayatın herhangi bir kapanış anı yaşayan yetişkinler için tasarlanmış, rehberli bir eğitim ve öz-yansıma deneyimidir.</p>
-        <p>Altı hafta boyunca, küçük bir grupla birlikte; geride bıraktıklarınızı adlandırmak, bugün durduğunuz yeri anlamak ve önünüzdeki bölüme daha berrak bir zihinle adım atmak için zaman ayırırsınız.</p>
-      </div>
+  <!-- ============ 2. EMOTIONAL PROOF ============ -->
+  <section class="proof">
+    <div class="proof__media" aria-hidden="true">
+      <!-- Replace with a short muted video loop or a single powerful photo:
+           e.g. the first dance, or the moment a couple hears her sing live.
+           assets/images/proof.jpg or proof.mp4 -->
+      <div class="proof__image-placeholder"></div>
+    </div>
+    <div class="proof__caption">
+      <p class="proof__quote">
+        „Für drei Minuten war der ganze Raum still —<br>
+        und dann haben alle geweint."
+      </p>
+      <p class="proof__attribution">— aus der Hochzeit von Lea &amp; Jonas, Juni 2025</p>
     </div>
   </section>
 
-  <div class="ornament" aria-hidden="true">
-    <span class="ornament-line"></span>
-    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
-      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <span class="ornament-line"></span>
-  </div>
-
-  <!-- JOURNEY -->
-  <section class="section journey" id="atolye">
-    <div class="wrap">
-      <p class="section-label"><span class="section-num">II</span><span class="section-label-line" aria-hidden="true"></span><span class="section-label-text">Atölye Yolculuğu</span></p>
-      <h2 class="section-title">Altı buluşma, tek bir geçiş</h2>
-      <ol class="stations">
-        <li class="station">
-          <span class="station-no">I</span>
-          <div>
-            <h3>Duraklama</h3>
-            <p>Gruba ve sürece varış. Hızını kesmek ve gerçekten durmak için ilk adım.</p>
-          </div>
-        </li>
-        <li class="station">
-          <span class="station-no">II</span>
-          <div>
-            <h3>Kökler</h3>
-            <p>Bugüne kadar sizi taşıyan hikâyeleri, alışkanlıkları ve değerleri fark etmek.</p>
-          </div>
-        </li>
-        <li class="station">
-          <span class="station-no">III</span>
-          <div>
-            <h3>Bırakma</h3>
-            <p>Taşımaya devam ettiğiniz ve artık bırakabileceğiniz şeyleri ayırt etmek.</p>
-          </div>
-        </li>
-        <li class="station station-signature">
-          <span class="station-no">IV</span>
-          <div>
-            <h3>Boncuk Ritüeli <span class="signature-tag">İmza Uygulama</span></h3>
-            <p>Grubun kalbindeki an: her katılımcı, bıraktığı ya da yanında taşımaya karar verdiği bir anıyı elle dizdiği bir boncuğa dönüştürür.</p>
-          </div>
-        </li>
-        <li class="station">
-          <span class="station-no">V</span>
-          <div>
-            <h3>Boşluk</h3>
-            <p>Henüz adı konmamış olanla, belirsizlikle oturmayı öğrenmek.</p>
-          </div>
-        </li>
-        <li class="station">
-          <span class="station-no">VI</span>
-          <div>
-            <h3>Kanat</h3>
-            <p>Yeni bölüme, elinizdekilerle ve daha hafif bir yükle adım atmak.</p>
-          </div>
-        </li>
-      </ol>
+  <!-- ============ 3. ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="about__portrait">
+      <img class="about__image" src="portrait.jpg" alt="Porträt von Melis Bulut" loading="lazy">
+    </div>
+    <div class="about__text">
+      <p class="eyebrow">Über Melis</p>
+      <h2 class="section-title">Ich singe nicht<br><em>für</em> euch.<br>Ich singe <em>mit</em> euch.</h2>
+      <p class="body-text">
+        Seit über zehn Jahren begleite ich Hochzeiten — als Sängerin, aber vor
+        allem als jemand, der genau hinhört. Bevor ich eine Note singe, will
+        ich wissen, wer ihr seid: wie ihr euch kennengelernt habt, welches
+        Lied bei eurem ersten Date lief, wovor ihr euch am meisten fürchtet,
+        wenn ihr an diesen Tag denkt.
+      </p>
+      <p class="body-text">
+        Daraus entsteht die Musik eures Tages — nicht aus einer Playlist von
+        der Stange.
+      </p>
+      <ul class="stat-row">
+        <li><span class="stat-num">180+</span><span class="stat-label">Hochzeiten begleitet</span></li>
+        <li><span class="stat-num">11</span><span class="stat-label">Jahre Erfahrung</span></li>
+        <li><span class="stat-num">4</span><span class="stat-label">Sprachen im Repertoire</span></li>
+      </ul>
     </div>
   </section>
 
-  <div class="ornament" aria-hidden="true">
-    <span class="ornament-line"></span>
-    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
-      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <span class="ornament-line"></span>
-  </div>
-
-  <!-- ABOUT YASEMIN -->
-  <section class="section about" id="yasemin">
-    <div class="wrap about-grid">
-      <div class="about-media corner-frame">
-        <img src="logo.heic" alt="Yasemin Hanım'ın portresi" loading="lazy">
-      </div>
-      <div class="about-copy">
-        <p class="section-label"><span class="section-num">III</span><span class="section-label-line" aria-hidden="true"></span><span class="section-label-text">Rehberiniz</span></p>
-        <h2 class="section-title">Yasemin Hanım</h2>
-        <p class="about-title">Eğitim Bilimci &amp; Kök &amp; Kanat'ın Kurucusu</p>
-        <p>Yıllarını yetişkin eğitimine ve öğrenme süreçlerine adayan Yasemin Hanım, kendi hayatındaki köklü bir geçişin ardından fark etti: insanların çoğu, bir bölümü kapatmadan diğerine geçmeye çalışıyor.</p>
-        <p>Kök &amp; Kanat, onun eğitim bilimindeki birikimini kendi deneyimiyle birleştirerek kurduğu, küçük gruplarla yürütülen samimi bir alan.</p>
-      </div>
+  <!-- ============ 4. THE EXPERIENCE (USP) — no cards, editorial numbered list ============ -->
+  <section class="experience">
+    <div class="experience__intro">
+      <p class="eyebrow">Musikalische Regie</p>
+      <h2 class="experience__title">
+        Es geht nicht darum,<br>
+        <em>was</em> gesungen wird.<br>
+        Es geht darum, <em>wann</em>.
+      </h2>
+      <p class="body-text">
+        Die meisten Hochzeitssänger bieten euch eine Songliste. Ich gestalte
+        den musikalischen Bogen eures Tages — wo Stille wichtiger ist als ein
+        Lied, wo ein Song sich langsam aufbaut, wo der Raum etwas fühlen soll,
+        bevor er es merkt.
+      </p>
     </div>
-  </section>
 
-  <div class="ornament" aria-hidden="true">
-    <span class="ornament-line"></span>
-    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
-      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <span class="ornament-line"></span>
-  </div>
-
-  <!-- DETAILS -->
-  <section class="section details" id="detaylar">
-    <div class="wrap">
-      <p class="section-label"><span class="section-num">IV</span><span class="section-label-line" aria-hidden="true"></span><span class="section-label-text">Detaylar</span></p>
-      <div class="details-grid">
-        <div class="detail-item">
-          <h3>Tarih</h3>
-          <p>20 Eylül 2026'da başlıyor · 6 hafta, haftada bir buluşma</p>
+    <ol class="numbered-list">
+      <li class="numbered-list__item">
+        <span class="numbered-list__num">01</span>
+        <div class="numbered-list__body">
+          <h3>Vor der Zeremonie</h3>
+          <p>Ruhige, unaufdringliche Stücke, die eintreffende Gäste einstimmen — ohne sich in den Vordergrund zu drängen.</p>
         </div>
-        <div class="detail-item">
-          <h3>Yer</h3>
-          <p>Caferağa Medresesi, İstanbul</p>
+      </li>
+      <li class="numbered-list__item">
+        <span class="numbered-list__num">02</span>
+        <div class="numbered-list__body">
+          <h3>Der Einzug</h3>
+          <p>Der Moment, der am längsten in Erinnerung bleibt. Zeitpunkt, Lautstärke und Stille werden bewusst gesetzt.</p>
         </div>
-        <div class="detail-item">
-          <h3>Grup</h3>
-          <p>8–12 katılımcı ile sınırlı, samimi bir grup</p>
+      </li>
+      <li class="numbered-list__item">
+        <span class="numbered-list__num">03</span>
+        <div class="numbered-list__body">
+          <h3>Der erste Tanz</h3>
+          <p>Live gesungen, oft in einer reduzierten Fassung, die dem Moment Raum lässt, statt ihn zu füllen.</p>
         </div>
-        <div class="detail-item">
-          <h3>Katılım Bedeli</h3>
-          <p><span class="price"><!-- PLACEHOLDER: fiyatı güncelleyin -->9.800 ₺</span></p>
-        </div>
+      </li>
+    </ol>
+  </section>
+
+  <div class="wave-divider wave-divider--flip" aria-hidden="true">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none" class="wave-svg">
+      <path class="wave-path" d="M0,40 C100,10 200,70 300,40 C400,10 500,70 600,40 C700,10 800,70 900,40 C1000,10 1100,70 1200,40" />
+    </svg>
+  </div>
+
+  <!-- ============ 5. REPERTOIRE & SOUND ============ -->
+  <section class="repertoire">
+    <p class="eyebrow">Klang &amp; Repertoire</p>
+    <h2 class="section-title">Von Zärtlich bis Ausgelassen</h2>
+    <p class="body-text body-text--wide">
+      Deutsch, Englisch, Türkisch, Französisch — akustisch oder mit Band,
+      klassisch interpretiert oder ganz neu. Hört selbst rein:
+    </p>
+
+    <div class="audio-player" role="group" aria-label="Audio-Beispiel anhören">
+      <button class="audio-player__toggle" id="audioToggle" aria-pressed="false">
+        <span class="audio-player__icon" aria-hidden="true">▶</span>
+        <span class="audio-player__label">Live-Ausschnitt anhören</span>
+      </button>
+      <div class="audio-player__track" aria-hidden="true">
+        <div class="audio-player__progress" id="audioProgress"></div>
       </div>
+      <audio id="audioSample" preload="none">
+        <!-- Replace with a real performance clip: assets/audio/sample.mp3 -->
+        <source src="assets/audio/sample.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <p class="genre-list">
+      Akustisch <span aria-hidden="true">·</span> Pop &amp; Soul <span aria-hidden="true">·</span>
+      Klassiker neu interpretiert <span aria-hidden="true">·</span> Türkische Klassiker <span aria-hidden="true">·</span>
+      Jazz-Standards
+    </p>
+  </section>
+
+  <!-- ============ 6. TESTIMONIALS — single large rotating quote, no card grid ============ -->
+  <section class="testimonials">
+    <p class="testimonials__label">Stimmen von Paaren</p>
+
+    <div class="testimonial-slider" data-testimonial-slider>
+      <span class="testimonial-slider__mark" aria-hidden="true">„</span>
+
+      <blockquote class="testimonial-slide is-active">
+        <p>So etwas Schönes habe ich schon lang nicht mehr gehört. Dieses Gefühl, diese Stimmfarbe …</p>
+      </blockquote>
+      <blockquote class="testimonial-slide">
+        <p>Für meine Ohren ein Segen. So toll gesungen …</p>
+      </blockquote>
+      <blockquote class="testimonial-slide">
+        <p>Du berührst mein Herz. Ganz volle Stimme mit so viel Gefühl.</p>
+      </blockquote>
+    </div>
+
+    <div class="testimonial-dots" role="tablist" aria-label="Weitere Stimmen anzeigen">
+      <button class="testimonial-dot is-active" type="button" data-index="0" aria-label="Stimme 1 anzeigen" aria-selected="true"></button>
+      <button class="testimonial-dot" type="button" data-index="1" aria-label="Stimme 2 anzeigen" aria-selected="false"></button>
+      <button class="testimonial-dot" type="button" data-index="2" aria-label="Stimme 3 anzeigen" aria-selected="false"></button>
     </div>
   </section>
 
-  <div class="ornament" aria-hidden="true">
-    <span class="ornament-line"></span>
-    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
-      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <span class="ornament-line"></span>
-  </div>
+  <!-- ============ MANIFESTO — standalone statement, own breathing room ============ -->
+  <section class="manifesto">
+    <p class="manifesto__text">
+      Ihr werdet euch nicht an jedes Wort erinnern, das an diesem Tag
+      gesagt wurde. Aber an das Gefühl, als die Musik einsetzte —
+      <em>daran schon.</em>
+    </p>
+  </section>
 
-  <!-- FAQ -->
-  <section class="section faq" id="faq">
-    <div class="wrap">
-      <p class="section-label"><span class="section-num">V</span><span class="section-label-line" aria-hidden="true"></span><span class="section-label-text">Sık Sorulan Sorular</span></p>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>Bu bir terapi süreci mi?</summary>
-          <p>Hayır. Kök &amp; Kanat, eğitim odaklı ve rehberli bir öz-yansıma atölyesidir; terapi ya da klinik bir müdahale değildir.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Nasıl katılabilirim?</summary>
-          <p>Sadece WhatsApp üzerinden yazmanız yeterli. Yasemin Hanım size süreci ve yer durumunu birlikte netleştirir.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Grup neden bu kadar küçük tutuluyor?</summary>
-          <p>8–12 kişilik grup, herkesin gerçekten görülebildiği ve güvende hissettiği bir alan yaratmak için tercih ediliyor.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Ödeme ve iptal koşulları nasıl?</summary>
-          <p>Ödeme planı ve iptal koşulları, WhatsApp üzerinden başvurunuzla birlikte ayrıntılı olarak paylaşılır.</p>
-        </details>
-      </div>
+  <!-- ============ 7. BOOKING PROCESS — same numbered-list system, varied rhythm (left-aligned) ============ -->
+  <section class="process">
+    <p class="eyebrow">So einfach ist es</p>
+    <h2 class="process__title">Drei Schritte bis zur Zusage</h2>
+
+    <ol class="numbered-list numbered-list--compact">
+      <li class="numbered-list__item">
+        <span class="numbered-list__num">01</span>
+        <div class="numbered-list__body">
+          <h3>Nachricht schreiben</h3>
+          <p>Datum, Ort und ein paar Worte zu euch — per WhatsApp, ganz unkompliziert.</p>
+        </div>
+      </li>
+      <li class="numbered-list__item">
+        <span class="numbered-list__num">02</span>
+        <div class="numbered-list__body">
+          <h3>Kurzes Gespräch</h3>
+          <p>Wir sprechen über euren Tag, eure Musikwünsche und was euch wichtig ist.</p>
+        </div>
+      </li>
+      <li class="numbered-list__item">
+        <span class="numbered-list__num">03</span>
+        <div class="numbered-list__body">
+          <h3>Termin gesichert</h3>
+          <p>Ihr erhaltet eine schriftliche Bestätigung — euer Datum ist reserviert.</p>
+        </div>
+      </li>
+    </ol>
+
+    <a
+      class="btn btn--primary"
+      href="https://wa.me/491234567890?text=Hallo%20Melis%2C%20wir%20planen%20unsere%20Hochzeit%20und%20würden%20gerne%20mit%20dir%20sprechen."
+      target="_blank"
+      rel="noopener"
+    >
+      Jetzt Nachricht schreiben
+    </a>
+  </section>
+
+  <!-- ============ 8. FAQ ============ -->
+  <section class="faq">
+    <p class="eyebrow eyebrow--center">Häufige Fragen</p>
+
+    <div class="faq__list">
+      <details class="faq__item">
+        <summary>Wie weit im Voraus sollten wir buchen?</summary>
+        <p>Beliebte Termine, besonders an Wochenenden zwischen Mai und September, sind oft 8–12 Monate im Voraus vergeben. Kurzfristige Anfragen lohnen sich trotzdem immer — fragt einfach nach.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Reist Melis auch außerhalb der Region an?</summary>
+        <p>Ja. Auftritte in ganz Deutschland und im deutschsprachigen Ausland sind möglich, Reisekosten werden individuell besprochen.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Können wir eigene Songwünsche einbringen?</summary>
+        <p>Unbedingt. Euer Wunschlied für den ersten Tanz oder den Einzug ist der Ausgangspunkt jeder Zusammenarbeit.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Tritt Melis solo auf oder mit Band?</summary>
+        <p>Beides ist möglich — von akustischer Gitarrenbegleitung bis zum vollen Bandsetup, je nach Location und Wunsch.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Was passiert, wenn Melis kurzfristig ausfällt?</summary>
+        <p>Über ein verlässliches Netzwerk erfahrener Musikerinnen und Musiker ist im unwahrscheinlichen Fall eines Ausfalls ein gleichwertiger Ersatz organisiert.</p>
+      </details>
     </div>
   </section>
 
-  <div class="ornament" aria-hidden="true">
-    <span class="ornament-line"></span>
-    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
-      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <span class="ornament-line"></span>
-  </div>
-
-  <!-- FINAL CTA -->
-  <section class="section final-cta">
-    <div class="wrap">
-      <h2 class="section-title">20 Eylül'de başlıyoruz.</h2>
-      <p>Yer sınırlı. Sorularınızla ya da doğrudan katılım için Yasemin Hanım'a yazın.</p>
-      <a class="btn btn-primary btn-large" data-wa="a" href="#">WhatsApp'tan Yazın</a>
-    </div>
+  <!-- ============ 9. FINAL CTA ============ -->
+  <section class="final-cta">
+    <h2 class="final-cta__headline">
+      Euer Datum wartet<br><em>nicht ewig.</em>
+    </h2>
+    <p class="final-cta__sub">Schreibt Melis noch heute und sichert euch euren Wunschtermin.</p>
+    <a
+      class="btn btn--primary btn--large"
+      href="https://wa.me/491234567890?text=Hallo%20Melis%2C%20wir%20planen%20unsere%20Hochzeit%20und%20würden%20gerne%20mit%20dir%20sprechen."
+      target="_blank"
+      rel="noopener"
+    >
+      Verfügbarkeit für unser Datum prüfen
+    </a>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="wrap footer-grid">
-    <div>
-      <p class="logo footer-logo">Kök &amp; Kanat</p>
-      <p class="footer-note">Yeni bir bölüme geçiş atölyesi</p>
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <p class="footer__name">Melis Bulut</p>
+    <p class="footer__tagline">Hochzeitssängerin · Deutschlandweit &amp; international</p>
+    <div class="footer__links">
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/491234567890" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#impressum">Impressum</a>
     </div>
-    <div class="footer-legal">
-      <p>[Şirket/İşletme Unvanı Placeholder]</p>
-      <p>[Adres Placeholder], İstanbul</p>
-      <p>Vergi Dairesi / Vergi No: [Placeholder]</p>
-      <p>Mersis No: [Placeholder]</p>
-      <p>E-posta: <a href="mailto:info@kokkanat.com">info@kokkanat.com</a> · Tel: [Placeholder]</p>
-    </div>
-    <div class="footer-links">
-      <a href="#" data-wa="b">Sadece WhatsApp'ı aç</a>
-      <a href="#">Gizlilik Politikası (yer tutucu)</a>
-      <a href="#">KVKK Aydınlatma Metni (yer tutucu)</a>
-    </div>
+    <p class="footer__legal" id="impressum">© <span id="year"></span> Melis Bulut. Alle Rechte vorbehalten.</p>
   </div>
-  <p class="footer-copy">© 2026 Kök &amp; Kanat. Tüm hakları saklıdır.</p>
 </footer>
 
-<a class="mobile-sticky-cta" data-wa="a" href="#">WhatsApp'tan Yazın</a>
+<!-- Sticky mobile WhatsApp button -->
+<a
+  class="sticky-cta"
+  href="https://wa.me/491234567890?text=Hallo%20Melis%2C%20wir%20planen%20unsere%20Hochzeit%20und%20würden%20gerne%20mit%20dir%20sprechen."
+  target="_blank"
+  rel="noopener"
+  aria-label="Auf WhatsApp kontaktieren"
+>
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="currentColor">
+    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.08 0 1.22.89 2.4 1.01 2.57.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.28z"/>
+  </svg>
+</a>
 
 <script>
-/**
- * Kök & Kanat — Editorial Luxury (single-file demo build)
- * Vanilla JS only. No dependencies, no build step.
- */
-(function () {
-  'use strict';
+/* ==========================================================================
+   MELIS BULUT — INTERACTIONS
+   Vanilla JS only. No dependencies, no build step.
+   ========================================================================== */
 
-  /* ---------------------------------------------
-   * WhatsApp configuration
-   * WHATSAPP_NUMBER'ı gerçek işletme numarasıyla
-   * (ülke kodu dahil, sadece rakamlar) değiştirin.
-   * ------------------------------------------- */
-  var WHATSAPP_NUMBER = '905462911590';
+document.addEventListener('DOMContentLoaded', () => {
 
-  function buildWhatsAppUrl() {
-    return 'https://wa.me/' + WHATSAPP_NUMBER; // önceden yazılmış mesaj yok — sohbet boş açılır
+  /* ---- Footer year ---- */
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---- Nav background on scroll ---- */
+  const nav = document.getElementById('nav');
+  if (nav) {
+    const toggleNav = () => {
+      if (window.scrollY > 40) nav.classList.add('is-scrolled');
+      else nav.classList.remove('is-scrolled');
+    };
+    toggleNav();
+    window.addEventListener('scroll', toggleNav, { passive: true });
   }
 
-  function initWhatsAppLinks() {
-    var links = document.querySelectorAll('[data-wa]');
-    links.forEach(function (link) {
-      var variant = link.getAttribute('data-wa') === 'b' ? 'b' : 'a';
-      link.setAttribute('href', buildWhatsAppUrl(variant));
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
+  /* ---- Scroll-reveal for content blocks ---- */
+  const revealTargets = document.querySelectorAll(
+    '.about__text, .about__portrait, .numbered-list__item, .testimonial-slider, ' +
+    '.faq__item, .proof__caption, .repertoire, .manifesto__text, .final-cta__headline'
+  );
+  revealTargets.forEach(el => el.classList.add('reveal'));
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  revealTargets.forEach(el => revealObserver.observe(el));
+
+  /* ---- Signature waveform draw-in ---- */
+  const wavePaths = document.querySelectorAll('.wave-path');
+  const waveObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        waveObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  wavePaths.forEach(path => waveObserver.observe(path));
+
+  /* ---- Audio sample player ---- */
+  const audioToggle = document.getElementById('audioToggle');
+  const audioSample = document.getElementById('audioSample');
+  const audioProgress = document.getElementById('audioProgress');
+  const audioLabel = audioToggle ? audioToggle.querySelector('.audio-player__label') : null;
+  const audioIcon = audioToggle ? audioToggle.querySelector('.audio-player__icon') : null;
+
+  if (audioToggle && audioSample) {
+    audioToggle.addEventListener('click', () => {
+      if (audioSample.paused) {
+        audioSample.play().catch(() => {
+          // Fails gracefully if assets/audio/sample.mp3 has not been added yet.
+          if (audioLabel) audioLabel.textContent = 'Audio wird bald verfügbar sein';
+        });
+      } else {
+        audioSample.pause();
+      }
+    });
+
+    audioSample.addEventListener('play', () => {
+      audioToggle.setAttribute('aria-pressed', 'true');
+      if (audioIcon) audioIcon.textContent = '❚❚';
+      if (audioLabel) audioLabel.textContent = 'Wird abgespielt …';
+    });
+
+    audioSample.addEventListener('pause', () => {
+      audioToggle.setAttribute('aria-pressed', 'false');
+      if (audioIcon) audioIcon.textContent = '▶';
+      if (audioLabel) audioLabel.textContent = 'Live-Ausschnitt anhören';
+    });
+
+    audioSample.addEventListener('ended', () => {
+      if (audioProgress) audioProgress.style.width = '0%';
+    });
+
+    audioSample.addEventListener('timeupdate', () => {
+      if (!audioSample.duration || !audioProgress) return;
+      const pct = (audioSample.currentTime / audioSample.duration) * 100;
+      audioProgress.style.width = pct + '%';
     });
   }
 
-  function initMobileNav() {
-    var toggle = document.querySelector('[data-nav-toggle]');
-    var nav = document.querySelector('[data-mobile-nav]');
-    if (!toggle || !nav) return;
+  /* ---- Testimonial slider ---- */
+  const slider = document.querySelector('[data-testimonial-slider]');
+  if (slider) {
+    const slides = slider.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    let current = 0;
+    let autoTimer = null;
 
-    toggle.addEventListener('click', function () {
-      var isOpen = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(isOpen));
-    });
+    const showSlide = (index) => {
+      slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === index);
+        dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      });
+      current = index;
+    };
 
-    nav.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
+    const startAuto = () => {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => {
+        showSlide((current + 1) % slides.length);
+      }, 6000);
+    };
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        showSlide(parseInt(dot.dataset.index, 10));
+        startAuto(); // reset the timer after manual interaction
       });
     });
+
+    startAuto();
   }
 
-  function initHeaderScrollState() {
-    var header = document.querySelector('[data-header]');
-    if (!header) return;
-    var onScroll = function () {
-      header.classList.toggle('is-scrolled', window.scrollY > 12);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
+});
 
-  function initScrollReveal() {
-    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var targets = document.querySelectorAll('.section, .station');
-    if (prefersReduced || !('IntersectionObserver' in window)) {
-      targets.forEach(function (el) { el.classList.add('is-visible'); });
-      return;
-    }
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-    targets.forEach(function (el) { observer.observe(el); });
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    initWhatsAppLinks();
-    initMobileNav();
-    initHeaderScrollState();
-    initScrollReveal();
-  });
-})();
 </script>
 </body>
 </html>
