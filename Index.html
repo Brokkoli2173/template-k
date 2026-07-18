@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kök & Kanat - Yeni Bir Bölüme Geçiş Atölyesi</title>
+<title>Kök & Kanat — Yeni Bir Bölüme Geçiş Atölyesi</title>
 <meta name="description" content="Kök & Kanat, İstanbul Caferağa Medresesi'nde altı hafta süren, hayatın yeni bir bölümüne rehberli geçiş atölyesi. 20 Eylül 2026'da başlıyor.">
 
 <!-- Open Graph -->
@@ -197,13 +197,47 @@ h1, h2, h3, p { margin: 0; }
 .section.is-visible { opacity: 1; transform: none; }
 
 .section-label {
-  font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--color-sage); margin-bottom: var(--space-2);
+  display: flex; align-items: center; gap: 0.9rem;
+  margin-bottom: var(--space-3);
+}
+.section-num {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem); color: var(--color-clay); line-height: 1;
+}
+.section-label-line {
+  flex: 0 0 2.5rem; height: 1px; background: var(--color-clay); opacity: 0.55;
+}
+.section-label-text {
+  font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--color-sage);
 }
 
 .section-title {
   font-family: var(--font-display); font-weight: 300;
   font-size: clamp(1.75rem, 3vw, 2.6rem); line-height: 1.2; max-width: 20ch;
+}
+
+/* Ornamental dividers between sections — echoes the root/wing mark */
+.ornament {
+  display: flex; align-items: center; justify-content: center; gap: var(--space-2);
+  max-width: 260px; margin: 0 auto; padding: 0 1.5rem; color: var(--color-gold);
+}
+.ornament-line { flex: 1; height: 1px; background: currentColor; opacity: 0.4; }
+.ornament-icon { flex-shrink: 0; width: 26px; height: 26px; opacity: 0.8; }
+
+/* Corner-bracket frame used on the portrait image */
+.corner-frame { position: relative; }
+.corner-frame::before, .corner-frame::after,
+.corner-frame > .corner-tr, .corner-frame > .corner-bl {
+  content: ''; position: absolute; width: 26px; height: 26px; border: 1px solid var(--color-gold);
+}
+.corner-frame::before { top: -10px; left: -10px; border-right: none; border-bottom: none; }
+.corner-frame::after { bottom: -10px; right: -10px; border-left: none; border-top: none; }
+
+/* Oversized decorative quotation mark beside the pull-quote */
+.quote-mark {
+  font-family: var(--font-display); font-style: italic; color: var(--color-gold);
+  font-size: 4.5rem; line-height: 0.6; opacity: 0.55; display: block; margin-bottom: 0.25rem;
 }
 
 /* Hero */
@@ -362,22 +396,41 @@ h1, h2, h3, p { margin: 0; }
     </div>
   </section>
 
+  <div class="ornament" aria-hidden="true">
+    <span class="ornament-line"></span>
+    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
+      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <span class="ornament-line"></span>
+  </div>
+
   <!-- INTRO -->
   <section class="section intro" id="giris">
     <div class="wrap intro-grid">
-      <p class="section-label">I. Giriş</p>
+      <p class="section-label"><span class="section-num">I</span><span class="section-label-line" aria-hidden="true"></span><span class="section-label-text">Giriş</span></p>
       <div class="intro-copy">
-        <p class="pull-quote">"Bazı bölümler sessizce biter. Onlara doğru bir veda söylemeden, yenisine başlamak zorlaşır."</p>
+        <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+        <p class="pull-quote">Bazı bölümler sessizce biter. Onlara doğru bir veda söylemeden, yenisine başlamak zorlaşır.</p>
         <p>Kök &amp; Kanat bir terapi programı değildir. Kariyer değişimi, emeklilik, taşınma ya da hayatın herhangi bir kapanış anı yaşayan yetişkinler için tasarlanmış, rehberli bir eğitim ve öz-yansıma deneyimidir.</p>
         <p>Altı hafta boyunca, küçük bir grupla birlikte; geride bıraktıklarınızı adlandırmak, bugün durduğunuz yeri anlamak ve önünüzdeki bölüme daha berrak bir zihinle adım atmak için zaman ayırırsınız.</p>
       </div>
     </div>
   </section>
 
+  <div class="ornament" aria-hidden="true">
+    <span class="ornament-line"></span>
+    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
+      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <span class="ornament-line"></span>
+  </div>
+
   <!-- JOURNEY -->
   <section class="section journey" id="atolye">
     <div class="wrap">
-      <p class="section-label">II. Atölye Yolculuğu</p>
+      <p class="section-label"><span class="section-num">II</span><span class="section-label-line" aria-hidden="true"></span><span class="section-label-text">Atölye Yolculuğu</span></p>
       <h2 class="section-title">Altı buluşma, tek bir geçiş</h2>
       <ol class="stations">
         <li class="station">
@@ -426,14 +479,23 @@ h1, h2, h3, p { margin: 0; }
     </div>
   </section>
 
+  <div class="ornament" aria-hidden="true">
+    <span class="ornament-line"></span>
+    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
+      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <span class="ornament-line"></span>
+  </div>
+
   <!-- ABOUT YASEMIN -->
   <section class="section about" id="yasemin">
     <div class="wrap about-grid">
-      <div class="about-media">
+      <div class="about-media corner-frame">
         <img src="logo.heic" alt="Yasemin Hanım'ın portresi" loading="lazy">
       </div>
       <div class="about-copy">
-        <p class="section-label">III. Rehberiniz</p>
+        <p class="section-label"><span class="section-num">III</span><span class="section-label-line" aria-hidden="true"></span><span class="section-label-text">Rehberiniz</span></p>
         <h2 class="section-title">Yasemin Hanım</h2>
         <p class="about-title">Eğitim Bilimci &amp; Kök &amp; Kanat'ın Kurucusu</p>
         <p>Yıllarını yetişkin eğitimine ve öğrenme süreçlerine adayan Yasemin Hanım, kendi hayatındaki köklü bir geçişin ardından fark etti: insanların çoğu, bir bölümü kapatmadan diğerine geçmeye çalışıyor.</p>
@@ -442,10 +504,19 @@ h1, h2, h3, p { margin: 0; }
     </div>
   </section>
 
+  <div class="ornament" aria-hidden="true">
+    <span class="ornament-line"></span>
+    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
+      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <span class="ornament-line"></span>
+  </div>
+
   <!-- DETAILS -->
   <section class="section details" id="detaylar">
     <div class="wrap">
-      <p class="section-label">IV. Detaylar</p>
+      <p class="section-label"><span class="section-num">IV</span><span class="section-label-line" aria-hidden="true"></span><span class="section-label-text">Detaylar</span></p>
       <div class="details-grid">
         <div class="detail-item">
           <h3>Tarih</h3>
@@ -467,10 +538,19 @@ h1, h2, h3, p { margin: 0; }
     </div>
   </section>
 
+  <div class="ornament" aria-hidden="true">
+    <span class="ornament-line"></span>
+    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
+      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <span class="ornament-line"></span>
+  </div>
+
   <!-- FAQ -->
   <section class="section faq" id="faq">
     <div class="wrap">
-      <p class="section-label">V. Sık Sorulan Sorular</p>
+      <p class="section-label"><span class="section-num">V</span><span class="section-label-line" aria-hidden="true"></span><span class="section-label-text">Sık Sorulan Sorular</span></p>
       <div class="faq-list">
         <details class="faq-item">
           <summary>Bu bir terapi süreci mi?</summary>
@@ -491,6 +571,15 @@ h1, h2, h3, p { margin: 0; }
       </div>
     </div>
   </section>
+
+  <div class="ornament" aria-hidden="true">
+    <span class="ornament-line"></span>
+    <svg class="ornament-icon" viewBox="0 0 40 40" fill="none">
+      <path d="M20 8 C14 12, 11 18, 11 24 C11 30, 15 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 8 C26 12, 29 18, 29 24 C29 30, 25 34, 20 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <span class="ornament-line"></span>
+  </div>
 
   <!-- FINAL CTA -->
   <section class="section final-cta">
