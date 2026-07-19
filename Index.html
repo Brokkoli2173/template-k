@@ -262,7 +262,14 @@ h1, h2, h3, p { margin: 0; }
   border-left: 2px solid var(--color-clay); padding-left: var(--space-3); margin-bottom: var(--space-3);
 }
 .intro-copy p + p { margin-top: var(--space-2); }
+.intro-body { display: grid; gap: var(--space-4); }
+.intro-image { margin: 0; }
+.intro-image svg, .intro-image img { border-radius: var(--radius); width: 100%; height: auto; object-fit: cover; }
+.intro-image figcaption {
+  margin-top: 0.6rem; font-size: 0.85rem; font-style: italic; color: var(--color-sage);
+}
 @media (min-width: 900px) { .intro-grid { grid-template-columns: 220px 1fr; align-items: start; } }
+@media (min-width: 700px) { .intro-body { grid-template-columns: 1.3fr 1fr; align-items: start; } }
 
 /* Who list */
 .who-list { margin-top: var(--space-4); display: grid; gap: var(--space-2) var(--space-4); }
@@ -313,6 +320,12 @@ h1, h2, h3, p { margin: 0; }
 }
 .price { font-size: 1.4rem; font-family: var(--font-display); }
 @media (min-width: 700px) { .details-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.venue-gallery { margin-top: var(--space-5); display: grid; gap: var(--space-3); }
+.venue-photo { margin: 0; }
+.venue-photo svg, .venue-photo img { border-radius: var(--radius); width: 100%; height: auto; object-fit: cover; aspect-ratio: 4 / 3; }
+.venue-photo figcaption { margin-top: 0.6rem; font-size: 0.85rem; font-style: italic; color: var(--color-sage); }
+@media (min-width: 700px) { .venue-gallery { grid-template-columns: 1fr 1fr; } }
 
 /* FAQ */
 .faq-list { margin-top: var(--space-4); max-width: 760px; }
@@ -406,11 +419,17 @@ h1, h2, h3, p { margin: 0; }
   <section class="section intro" id="giris">
     <div class="wrap intro-grid">
       <p class="section-label"><span class="section-num">I</span><span class="section-label-line" aria-hidden="true"></span><span class="section-label-text">Giriş</span></p>
-      <div class="intro-copy">
-        <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-        <p class="pull-quote">Bazı bölümler sessizce biter. Onlara doğru bir veda söylemeden, yenisine başlamak zorlaşır.</p>
-        <p>Kök &amp; Kanat bir terapi programı değildir. Kariyer değişimi, emeklilik, taşınma ya da hayatın herhangi bir kapanış anı yaşayan yetişkinler için tasarlanmış, rehberli bir eğitim ve öz-yansıma deneyimidir.</p>
-        <p>Altı hafta boyunca, küçük bir grupla birlikte; geride bıraktıklarınızı adlandırmak, bugün durduğunuz yeri anlamak ve önünüzdeki bölüme daha berrak bir zihinle adım atmak için zaman ayırırsınız.</p>
+      <div class="intro-body">
+        <div class="intro-copy">
+          <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="pull-quote">Bazı bölümler sessizce biter. Onlara doğru bir veda söylemeden, yenisine başlamak zorlaşır.</p>
+          <p>Kök &amp; Kanat bir terapi programı değildir. Kariyer değişimi, emeklilik, taşınma ya da hayatın herhangi bir kapanış anı yaşayan yetişkinler için tasarlanmış, rehberli bir eğitim ve öz-yansıma deneyimidir.</p>
+          <p>Altı hafta boyunca, küçük bir grupla birlikte; geride bıraktıklarınızı adlandırmak, bugün durduğunuz yeri anlamak ve önünüzdeki bölüme daha berrak bir zihinle adım atmak için zaman ayırırsınız.</p>
+        </div>
+        <figure class="intro-image corner-frame">
+          <img src="gunluk-yakin-cekim.jpg" alt="Bir defter sayfasına yazı yazan elin yakın çekimi" loading="lazy">
+          <figcaption>Bir defter sayfasına, o hafta taşıdıklarınızı yazdığınız an.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -522,6 +541,17 @@ h1, h2, h3, p { margin: 0; }
           <h3>Katılım Bedeli</h3>
           <p><span class="price"><!-- PLACEHOLDER: fiyatı güncelleyin -->9.800 ₺</span></p>
         </div>
+      </div>
+
+      <div class="venue-gallery">
+        <figure class="venue-photo corner-frame">
+          <img src="mekan-avlu.jpg" alt="Caferağa Medresesi'nin avlusu" loading="lazy">
+          <figcaption>Caferağa Medresesi'nin tarihi avlusu</figcaption>
+        </figure>
+        <figure class="venue-photo corner-frame">
+          <img src="mekan-seminer-odasi.jpg" alt="Atölyenin yapıldığı taş duvarlı seminer odası" loading="lazy">
+          <figcaption>Buluşmaların yapıldığı taş duvarlı seminer odası</figcaption>
+        </figure>
       </div>
     </div>
   </section>
