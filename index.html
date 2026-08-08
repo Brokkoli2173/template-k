@@ -318,27 +318,27 @@ h1, h2, h3, p { margin: 0; }
 .station.is-visible { opacity: 1; transform: none; }
 .station-no { font-family: var(--font-display); font-style: italic; font-size: 1.4rem; color: var(--color-clay); }
 .station h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; margin-bottom: 0.35rem; }
+.station-sub { font-style: italic; color: var(--color-clay); margin-bottom: 0.4rem; }
 .station p { max-width: 60ch; color: rgba(43, 36, 24, 0.82); }
-.station-signature {
-  background: var(--color-paper-alt); margin: 0 calc(var(--space-3) * -1);
-  padding: var(--space-3); border-top-color: var(--color-gold);
-}
-.signature-tag {
-  display: inline-block; font-family: var(--font-body); font-size: 0.68rem;
-  letter-spacing: 0.1em; text-transform: uppercase; background: var(--color-gold);
-  color: var(--color-paper); padding: 0.2rem 0.5rem; border-radius: var(--radius);
-  vertical-align: middle; margin-left: 0.6rem;
-}
 @media (min-width: 700px) {
   .stations { grid-template-columns: 1fr 1fr; gap: var(--space-4) var(--space-4); }
   .station { border-top: none; padding: 0; }
-  .station-signature { grid-column: 1 / -1; margin: 0; }
 }
 
 /* About Yasemin */
 .about-grid { display: grid; gap: var(--space-4); align-items: center; }
 .about-title { color: var(--color-sage); font-weight: 600; margin: 0.4rem 0 var(--space-2); }
 .about-copy p + p { margin-top: var(--space-2); }
+.about-path {
+  max-width: 640px; margin: var(--space-5) auto 0; padding-top: var(--space-4);
+  border-top: 1px solid var(--color-line);
+}
+.about-path-title {
+  font-family: var(--font-display); font-weight: 500; font-size: 1.4rem;
+  color: var(--color-clay); margin-bottom: var(--space-3);
+}
+.about-path p { color: rgba(43, 36, 24, 0.85); }
+.about-path p + p { margin-top: var(--space-2); }
 @media (min-width: 800px) { .about-grid { grid-template-columns: 340px 1fr; } }
 
 /* Details + price */
@@ -387,7 +387,56 @@ h1, h2, h3, p { margin: 0; }
 .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
 .footer-links a { text-decoration: none; opacity: 0.85; }
 .footer-links a:hover { opacity: 1; text-decoration: underline; }
+.footer-link-btn {
+  background: none; border: none; padding: 0; margin: 0; text-align: left;
+  font-family: var(--font-body); font-size: inherit; color: inherit; cursor: pointer;
+  text-decoration: none; opacity: 0.85;
+}
+.footer-link-btn:hover { opacity: 1; text-decoration: underline; }
+
+/* Legal document modal */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200; display: none;
+  background: rgba(20, 16, 10, 0.55); backdrop-filter: blur(2px);
+  padding: 4vh 1rem; overflow-y: auto;
+}
+.modal-overlay.is-open { display: block; }
+.modal-panel {
+  position: relative; max-width: 720px; margin: 0 auto;
+  background: var(--color-paper); border-radius: 4px;
+  padding: var(--space-4) var(--space-3) var(--space-4);
+  box-shadow: 0 30px 60px -20px rgba(20, 16, 10, 0.5);
+}
+@media (min-width: 700px) {
+  .modal-panel { padding: var(--space-5) var(--space-4); }
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px;
+  border: 1px solid var(--color-line); border-radius: 50%; background: var(--color-paper);
+  color: var(--color-ink); font-size: 1.1rem; line-height: 1; cursor: pointer;
+}
+.modal-close:hover { background: var(--color-ink); color: var(--color-paper); }
+.modal-body { max-width: 62ch; }
+.modal-body h3 {
+  font-family: var(--font-display); font-weight: 500; font-size: 1.7rem;
+  margin: 0 0 0.3rem;
+}
+.modal-body .modal-updated { color: var(--color-sage); font-size: 0.85rem; margin-bottom: var(--space-3); }
+.modal-body h4 {
+  font-family: var(--font-display); font-weight: 500; font-size: 1.1rem;
+  color: var(--color-clay); margin: var(--space-3) 0 0.4rem;
+}
+.modal-body p { margin: 0.6rem 0; color: rgba(43, 36, 24, 0.85); }
+.modal-body ul { margin: 0.6rem 0; padding-left: 1.2rem; list-style: disc; }
+.modal-body li { margin: 0.3rem 0; color: rgba(43, 36, 24, 0.85); }
+.modal-body strong { color: var(--color-ink); }
+
 .footer-copy { text-align: center; margin-top: var(--space-4); color: rgba(43, 36, 24, 0.6); font-size: 0.8rem; }
+.site-credit {
+  text-align: center; margin-top: 0.75rem; padding-top: 0.75rem;
+  border-top: 1px solid var(--color-line);
+  color: rgba(43, 36, 24, 0.45); font-size: 0.72rem; letter-spacing: 0.04em;
+}
 @media (min-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr; } }
 
 /* Mobile sticky CTA */
@@ -436,9 +485,9 @@ h1, h2, h3, p { margin: 0; }
   <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
-      <p class="eyebrow" data-i18n="hero.eyebrow">Altı Haftalık Rehberli Atölye · İstanbul</p>
-      <h1 class="hero-title" data-i18n="hero.title">Köklerinizi bilmeden<br>kanat açılmaz.</h1>
-      <p class="hero-lede" data-i18n="hero.lede">Hayatın bir bölümünü kapatıp yenisini açarken, bu geçişe zaman ve dikkat ayırmak için tasarlanmış, altı buluşmalık bir öz-yansıma atölyesi.</p>
+      <p class="eyebrow" data-i18n="hero.eyebrow">Altı Buluşmalık Yapılandırılmış Atölye · İstanbul</p>
+      <h1 class="hero-title" data-i18n="hero.title">Köklerinizi bilmeden kanat açılmaz.</h1>
+      <p class="hero-lede" data-i18n="hero.lede">Hayatın bir bölümü kapanırken, bir sonrakine nasıl geçeceğimizi her zaman bilemeyiz. Kök &amp; Kanat, tam da böyle zamanlarda durmak, geride kalanlara bakmak ve bundan sonrasına daha bilinçli yönelmek için kendinize ayırabileceğiniz altı buluşmalık rehberli bir atölye.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" data-wa="a" href="#" data-i18n="cta.info">WhatsApp'tan Bilgi Alın</a>
         <a class="btn-link" href="#atolye" data-i18n="cta.explore">Atölyeyi keşfedin ↓</a>
@@ -459,9 +508,10 @@ h1, h2, h3, p { margin: 0; }
       <div class="intro-body">
         <div class="intro-copy">
           <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-          <p class="pull-quote" data-i18n="intro.quote">Bazı bölümler sessizce biter. Onlara doğru bir veda söylemeden, yenisine başlamak zorlaşır.</p>
-          <p data-i18n="intro.p1">Kök &amp; Kanat bir terapi programı değildir. Kariyer değişimi, emeklilik, taşınma ya da hayatın herhangi bir kapanış anı yaşayan yetişkinler için tasarlanmış, rehberli bir eğitim ve öz-yansıma deneyimidir.</p>
-          <p data-i18n="intro.p2">Altı hafta boyunca, küçük bir grupla birlikte; geride bıraktıklarınızı adlandırmak, bugün durduğunuz yeri anlamak ve önünüzdeki bölüme daha berrak bir zihinle adım atmak için zaman ayırırsınız.</p>
+          <p class="pull-quote" data-i18n="intro.quote">Bazı bölümler sessizce biter. Geride kalana dönüp bakmadan, yenisine başlamak bazen zorlaşır.</p>
+          <p data-i18n="intro.p0">Belki uzun süren bir çalışma hayatı sona erdi. Belki çocuklar evden ayrıldı, başka bir şehre taşındınız ya da hayatınızda adı henüz tam konmamış yeni bir dönem başladı…</p>
+          <p data-i18n="intro.p1">Kök &amp; Kanat, tam da böyle geçiş dönemlerinde kendi hikâyenize yeniden bakabilmeniz için tasarlanmış, altı buluşmalık rehberli bir atölyedir.</p>
+          <p data-i18n="intro.p2">Küçük bir grupla birlikte; geride bıraktıklarınızı fark etmek, bugün durduğunuz yeri anlamak ve bundan sonrasına daha bilinçli bakabilmek için kendinize zaman ayırırsınız.</p>
         </div>
         <figure class="intro-image photo-frame">
           <div class="photo-frame-inner aspect-portrait">
@@ -483,48 +533,54 @@ h1, h2, h3, p { margin: 0; }
   <section class="section journey" id="atolye">
     <div class="wrap">
       <p class="section-label"><span class="section-label-text" data-i18n="label.yolculuk">Atölye Yolculuğu</span></p>
-      <h2 class="section-title" data-i18n="journey.title">Altı buluşma, tek bir geçiş</h2>
+      <h2 class="section-title" data-i18n="journey.title">Altı buluşmada hikâyene yeniden bak.</h2>
       <ol class="stations">
         <li class="station">
           <span class="station-no">I</span>
           <div>
-            <h3 data-i18n="station1.h">Duraklama</h3>
-            <p data-i18n="station1.p">Gruba ve sürece varış. Hızını kesmek ve gerçekten durmak için ilk adım.</p>
+            <h3 data-i18n="station1.h">Başlangıç — Köklerim</h3>
+            <p class="station-sub" data-i18n="station1.sub">Durmak ve bakmak.</p>
+            <p data-i18n="station1.p">Önce bulunduğunuz yere varır, hızınızı biraz yavaşlatır ve sizi bugüne getiren köklere dönüp bakarsınız.</p>
           </div>
         </li>
         <li class="station">
           <span class="station-no">II</span>
           <div>
-            <h3 data-i18n="station2.h">Kökler</h3>
-            <p data-i18n="station2.p">Bugüne kadar sizi taşıyan hikâyeleri, alışkanlıkları ve değerleri fark etmek.</p>
+            <h3 data-i18n="station2.h">Aile ve İlk Deneyimler</h3>
+            <p class="station-sub" data-i18n="station2.sub">Hikâyenin başladığı yere bakmak.</p>
+            <p data-i18n="station2.p">Ailenizden, ilişkilerinizden ve ilk deneyimlerinizden bugüne taşıdığınız izleri fark etmeye başlarsınız.</p>
           </div>
         </li>
         <li class="station">
           <span class="station-no">III</span>
           <div>
-            <h3 data-i18n="station3.h">Bırakma</h3>
-            <p data-i18n="station3.p">Taşımaya devam ettiğiniz ve artık bırakabileceğiniz şeyleri ayırt etmek.</p>
+            <h3 data-i18n="station3.h">Dönüm Noktaları</h3>
+            <p class="station-sub" data-i18n="station3.sub">Geçtiğiniz yolları görmek.</p>
+            <p data-i18n="station3.p">Hayat çizginizde sizi değiştiren, yönünüzü etkileyen ve bugünkü sizi şekillendiren dönüm noktalarına bakarsınız.</p>
           </div>
         </li>
-        <li class="station station-signature">
+        <li class="station">
           <span class="station-no">IV</span>
           <div>
-            <h3><span data-i18n="station4.h">Boncuk Ritüeli</span> <span class="signature-tag" data-i18n="station4.tag">İmza Uygulama</span></h3>
-            <p data-i18n="station4.p">Grubun kalbindeki an: her katılımcı, bıraktığı ya da yanında taşımaya karar verdiği bir anıyı elle dizdiği bir boncuğa dönüştürür.</p>
+            <h3 data-i18n="station4.h">Tekrarlar</h3>
+            <p class="station-sub" data-i18n="station4.sub">Bağlantıları fark etmek.</p>
+            <p data-i18n="station4.p">Hayatınızda tekrar eden bazı örüntülere ve geçmişle bugün arasındaki bağlantılara daha yakından bakarsınız.</p>
           </div>
         </li>
         <li class="station">
           <span class="station-no">V</span>
           <div>
-            <h3 data-i18n="station5.h">Boşluk</h3>
-            <p data-i18n="station5.p">Henüz adı konmamış olanla, belirsizlikle oturmayı öğrenmek.</p>
+            <h3 data-i18n="station5.h">Bugünkü Ben</h3>
+            <p class="station-sub" data-i18n="station5.sub">Şimdi nerede olduğunuzu görmek.</p>
+            <p data-i18n="station5.p">Bugünkü değerlerinize, ihtiyaçlarınıza ve bundan sonrasına dair yönünüze odaklanırsınız.</p>
           </div>
         </li>
         <li class="station">
           <span class="station-no">VI</span>
           <div>
-            <h3 data-i18n="station6.h">Kanat</h3>
-            <p data-i18n="station6.p">Yeni bölüme, elinizdekilerle ve daha hafif bir yükle adım atmak.</p>
+            <h3 data-i18n="station6.h">Hasat</h3>
+            <p class="station-sub" data-i18n="station6.sub">Yanınıza ne alacağınızı seçmek.</p>
+            <p data-i18n="station6.p">Altı buluşmada fark ettiklerinizi bir araya getirir, geride bırakmak ve yanınızda taşımak istediklerinize bakarak bundan sonrasına yönelirsiniz.</p>
           </div>
         </li>
       </ol>
@@ -547,11 +603,20 @@ h1, h2, h3, p { margin: 0; }
         </div>
       </div>
       <div class="about-copy">
-        <p class="section-label"><span class="section-label-text" data-i18n="label.rehberiniz">Rehberiniz</span></p>
-        <h2 class="section-title">Yasemin Hanım</h2>
-        <p class="about-title" data-i18n="about.title">Eğitim Bilimci &amp; Kök &amp; Kanat'ın Kurucusu</p>
-        <p data-i18n="about.p1">Yıllarını yetişkin eğitimine ve öğrenme süreçlerine adayan Yasemin Hanım, kendi hayatındaki köklü bir geçişin ardından fark etti: insanların çoğu, bir bölümü kapatmadan diğerine geçmeye çalışıyor.</p>
-        <p data-i18n="about.p2">Kök &amp; Kanat, onun eğitim bilimindeki birikimini kendi deneyimiyle birleştirerek kurduğu, küçük gruplarla yürütülen samimi bir alan.</p>
+        <p class="section-label"><span class="section-label-text" data-i18n="label.rehberiniz">Ben Kimim?</span></p>
+        <h2 class="section-title" data-i18n="about.greeting">Merhaba, ben Yasemin.</h2>
+        <p class="about-title" data-i18n="about.title">Eğitim Bilimci, Kök &amp; Kanat'ın Kurucusu ve Atölye Yürütücüsüyüm.</p>
+        <p data-i18n="about.p1">Uzun yıllardır insanlarla, ailelerle ve onların yaşam hikâyeleriyle çalışıyorum. Köln Üniversitesi'nde tamamladığım pedagoji eğitimimle başlayan mesleki yolum; göçmen ailelerle yaptığım çalışmalar, sosyal ve pedagojik danışmanlık, üç yıllık Sistemik Terapi ve Aile Terapisi eğitimim ve bireysel danışmanlık deneyimlerimle şekillendi.</p>
+        <p data-i18n="about.p2">Kök &amp; Kanat biraz da bu yolculuktan doğdu.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="about-path">
+        <h3 class="about-path-title" data-i18n="about.pathTitle">Beni buraya getiren yol</h3>
+        <p data-i18n="about.path.p1">Yıllar boyunca insanların hayatlarının farklı dönemlerine eşlik ederken bir şeyi tekrar tekrar gördüm: Bazen ihtiyacımız olan, bir başkasının bize hangi yoldan gitmemiz gerektiğini söylemesi değil; durabileceğimiz, kendi hikâyemize yeniden bakabileceğimiz ve kendi cevaplarımıza yaklaşabileceğimiz bir alan.</p>
+        <p data-i18n="about.path.p2">Kök &amp; Kanat biraz da bu düşünceden doğdu.</p>
+        <p data-i18n="about.path.p3">Bu süreçte benim rolüm, yaratıcı çalışmalar, sorular ve paylaşımlar için oluşturduğum yapı içinde kendi hikâyenize yeniden bakabileceğiniz bir alan açmak. Hangi yoldan gitmeniz gerektiğini söylemek değil.</p>
+        <p data-i18n="about.path.p4">Kendi yaşamımda da durmayı, yeniden bakmayı ve yön değiştirmeyi deneyimlemiş biri olarak, altı buluşma boyunca bu sürece eşlik ediyorum.</p>
       </div>
     </div>
   </section>
@@ -569,15 +634,15 @@ h1, h2, h3, p { margin: 0; }
       <div class="details-grid">
         <div class="detail-item">
           <h3 data-i18n="detail.tarih.h">Tarih</h3>
-          <p data-i18n="detail.tarih.p">6 hafta, ayda ili buluşma</p>
+          <p data-i18n="detail.tarih.p">6 buluşma · Ayda iki kez, Pazar günleri<br>20 Eylül – 29 Kasım 2026<br>10.00–17.00 (13.00–14.00 öğle molası dâhil)</p>
         </div>
         <div class="detail-item">
           <h3 data-i18n="detail.yer.h">Yer</h3>
-          <p data-i18n="detail.yer.p">Caferağa Medresesi, İstanbul</p>
+          <p data-i18n="detail.yer.p">Caferağa Medresesi<br>Türk Kültürüne Hizmet Vakfı bünyesinde<br>Geleneksel Türk Sanatları Eğitim Merkezi<br>Caferiye Sok., Soğukkuyu Çıkmazı No: 5<br>Sultanahmet, Fatih / İstanbul</p>
         </div>
         <div class="detail-item">
           <h3 data-i18n="detail.grup.h">Grup</h3>
-          <p data-i18n="detail.grup.p">8–12 katılımcı ile sınırlı</p>
+          <p data-i18n="detail.grup.p">8–12 katılımcı ile sınırlı<br>Küçük ve özenle tutulan bir grup alanı.</p>
         </div>
       </div>
 
@@ -585,13 +650,13 @@ h1, h2, h3, p { margin: 0; }
         <figure class="venue-photo photo-frame">
           <div class="photo-frame-inner aspect-landscape">
             <img src="mekan-avlu.jpg" alt="Caferağa Medresesi'nin avlusu" loading="lazy">
-            <figcaption data-i18n="venue.avlu.caption">Caferağa Medresesi'nin tarihi avlusu</figcaption>
+            <figcaption data-i18n="venue.avlu.caption">Caferağa Medresesi, tarihi avludan bir köşe</figcaption>
           </div>
         </figure>
         <figure class="venue-photo photo-frame">
           <div class="photo-frame-inner aspect-landscape">
             <img src="mekan-seminer-odasi.jpg" alt="Atölyenin yapıldığı taş duvarlı seminer odası" loading="lazy">
-            <figcaption data-i18n="venue.seminer.caption">Buluşmaların yapıldığı taş duvarlı seminer odası</figcaption>
+            <figcaption data-i18n="venue.seminer.caption">Buluşmalarımızın gerçekleşeceği atölye alanı</figcaption>
           </div>
         </figure>
       </div>
@@ -610,32 +675,24 @@ h1, h2, h3, p { margin: 0; }
       <p class="section-label"><span class="section-label-text" data-i18n="label.faq">Sık Sorulan Sorular</span></p>
       <div class="faq-list">
         <details class="faq-item">
-          <summary data-i18n="faq1.q">Bu bir terapi mi?</summary>
-          <p data-i18n="faq1.a">Hayır. Kök &amp; Kanat; eğitim temelli, rehberli ve yapılandırılmış bir öz-yansıma atölyesidir. Katılımcıların yaşam hikâyelerine farklı bir gözle bakmalarını destekler. Terapi veya klinik bir müdahale değildir.</p>
+          <summary data-i18n="faq1.q">Kök &amp; Kanat tam olarak nedir?</summary>
+          <p data-i18n="faq1.a">Kök &amp; Kanat, kendi yaşam hikâyenize adım adım bakabileceğiniz, geçmişten bugüne sizi şekillendiren deneyimleri fark edip anlamlandırabileceğiniz, altı buluşmadan oluşan yapılandırılmış bir atölye programıdır.</p>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq2.q">Nasıl katılabilirim?</summary>
-          <p data-i18n="faq2.a">WhatsApp üzerinden bize yazmanız yeterlidir. Kısa bir ön görüşmenin ardından atölye hakkında sizi bilgilendiriyor, kontenjan durumunu birlikte değerlendiriyor ve kayıt sürecini birlikte tamamlıyoruz.</p>
+          <summary data-i18n="faq2.q">Kimler katılabilir?</summary>
+          <p data-i18n="faq2.a">Kendinizi daha iyi tanımak, hayatınızdaki dönüm noktalarına ve geçmişten bugüne taşıdıklarınıza yeniden bakmak, bundan sonrasına daha bilinçli yönelmek isteyen yetişkinler katılabilir.</p>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq3.q">Ödeme ve iptal koşulları nasıl?</summary>
-          <p data-i18n="faq3.a">Kayıt, ön ödeme ile kesinleşir. Kalan ödeme planı ve iptal koşulları kayıt öncesinde sizinle şeffaf şekilde paylaşılır. Böylece sürece başlamadan önce tüm detayları net olarak bilirsiniz.</p>
+          <summary data-i18n="faq3.q">Bu bir terapi mi?</summary>
+          <p data-i18n="faq3.a">Hayır. Kök &amp; Kanat, eğitim temelli ve yapılandırılmış bir öz-yansıma atölyesidir. Katılımcıların yaşam hikâyelerine farklı açılardan bakmalarını ve kendi deneyimlerini anlamlandırmalarını destekler. Terapi veya klinik bir müdahale değildir.</p>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq4.q">Kök &amp; Kanat tam olarak nedir?</summary>
-          <p data-i18n="faq4.a">Kök &amp; Kanat; yaşam hikâyene farklı bir gözle bakmanı sağlayan, eğitim temelli ve rehberli bir öz-yansıma atölyesidir.</p>
+          <summary data-i18n="faq4.q">Nasıl katılabilirim?</summary>
+          <p data-i18n="faq4.a">WhatsApp üzerinden bana yazmanız yeterli. Kısa bir ön görüşmede atölye hakkında sizi bilgilendiriyor, sorularınızı yanıtlıyor ve kontenjan durumunu birlikte değerlendiriyoruz. Katılmaya karar verdiğinizde kayıt sürecini tamamlıyoruz.</p>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq5.q">Kimler katılabilir?</summary>
-          <p data-i18n="faq5.a">Kendini daha iyi tanımak, hayatındaki dönüm noktalarını anlamlandırmak ve yeni bir bakış açısı kazanmak isteyen yetişkinler katılabilir.</p>
-        </details>
-        <details class="faq-item">
-          <summary data-i18n="faq6.q">İptal edebilir miyim?</summary>
-          <p data-i18n="faq6.a">İptal ve iade koşulları kayıt öncesinde ayrıntılı olarak paylaşılır.</p>
-        </details>
-        <details class="faq-item">
-          <summary data-i18n="faq7.q">Herkesin önünde hayat hikâyemi anlatmak zorunda mıyım?</summary>
-          <p data-i18n="faq7.a">Hayır. Paylaşımın sınırlarını her zaman sen belirlersin. Kendini hazır hissettiğin kadarını paylaşman yeterlidir.</p>
+          <summary data-i18n="faq5.q">Ödeme ve iptal koşulları nasıl?</summary>
+          <p data-i18n="faq5.a">Kayıt, ön ödeme ile kesinleşir. Kalan ödeme planı ve iptal koşulları kayıt öncesinde sizinle açıkça paylaşılır. Böylece sürece başlamadan önce tüm detayları bilirsiniz.</p>
         </details>
       </div>
     </div>
@@ -651,7 +708,7 @@ h1, h2, h3, p { margin: 0; }
   <section class="section final-cta">
     <div class="wrap">
       <h2 class="section-title" data-i18n="finalcta.title">20 Eylül'de başlıyoruz.</h2>
-      <p data-i18n="finalcta.p">Yer sınırlı. Sorularınızla ya da doğrudan katılım için Yasemin Hanım'a yazın.</p>
+      <p data-i18n="finalcta.p">İlk grup 8–12 kişiyle sınırlı. Sorularınız veya katılım için bana WhatsApp üzerinden yazabilirsiniz.</p>
       <a class="btn btn-primary btn-large" data-wa="a" href="#" data-i18n="cta.write">WhatsApp'tan Yazın</a>
     </div>
   </section>
@@ -662,26 +719,192 @@ h1, h2, h3, p { margin: 0; }
   <div class="wrap footer-grid">
     <div>
       <p class="logo footer-logo">Kök &amp; Kanat</p>
-      <p class="footer-note" data-i18n="footer.tagline">Yeni bir bölüme geçiş atölyesi</p>
+      <p class="footer-note" data-i18n="footer.tagline">Hikâyene dokun.</p>
     </div>
     <div class="footer-legal">
-      <p>[Şirket/İşletme Unvanı Placeholder]</p>
-      <p>[Adres Placeholder], İstanbul</p>
-      <p data-i18n="footer.taxLine">Vergi Dairesi / Vergi No: [Placeholder]</p>
+      <p>Kök &amp; Kanat</p>
+      <p>Zühtüpaşa Mah., Şefikbey Sk., Archerson Köşkü No:3 Oda No:301 · Kadıköy/İstanbul</p>
+      <p data-i18n="footer.addressCode">Adres Kodu: 2273816203</p>
+      <p data-i18n="footer.taxLine">Vergi Dairesi: Göztepe Vergi Dairesi Müdürlüğü</p>
       <p>Mersis No: [Placeholder]</p>
-      <p><span data-i18n="footer.email">E-posta</span>: <a href="mailto:yasemin@kokvekanat.com">yasemin@kokvekanat.com</a> · <span data-i18n="footer.tel">Tel</span>: <a href="tel:+905462911590">(0) 546 2911590</a></p>
+      <p><span data-i18n="footer.email">E-posta</span>: <a href="mailto:yasemin@kokvekanat.com">yasemin@kokvekanat.com</a> · <span data-i18n="footer.tel">Tel</span>: <a href="tel:+905462911590">0546 291 15 90</a></p>
     </div>
     <div class="footer-links">
       <a href="#" data-wa="b" data-i18n="cta.justOpen">Sadece WhatsApp'ı aç</a>
       <a href="https://www.instagram.com/kokvekanat.atolye" target="_blank" rel="noopener noreferrer">Instagram: @kokvekanat.atolye</a>
-      <a href="#" data-i18n="footer.privacy">Gizlilik Politikası (yer tutucu)</a>
-      <a href="#" data-i18n="footer.kvkk">KVKK Aydınlatma Metni (yer tutucu)</a>
+      <button type="button" class="footer-link-btn" data-open-modal="privacy" data-i18n="footer.privacy">Gizlilik Politikası</button>
+      <button type="button" class="footer-link-btn" data-open-modal="kvkk" data-i18n="footer.kvkk">KVKK Aydınlatma Metni</button>
     </div>
   </div>
   <p class="footer-copy">© 2026 Kök &amp; Kanat. <span data-i18n="footer.rights">Tüm hakları saklıdır.</span></p>
+  <p class="site-credit">Tasarım &amp; Geliştirme: Melis Bulut — UX/UI Design &amp; Development</p>
 </footer>
 
 <a class="mobile-sticky-cta" data-wa="a" href="#" data-i18n="cta.write">WhatsApp'tan Yazın</a>
+
+<!-- Legal document modals: kept Turkish-only, as these are legally binding texts -->
+<div class="modal-overlay" id="modal-privacy" data-modal-overlay aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title">
+    <button type="button" class="modal-close" data-close-modal aria-label="Kapat">×</button>
+    <div class="modal-body">
+      <h3 id="modal-privacy-title">GİZLİLİK POLİTİKASI</h3>
+      <p class="modal-updated">Son güncelleme: Ağustos 2026</p>
+
+      <p>Kök &amp; Kanat olarak internet sitemizi ziyaret eden kişilerin gizliliğine önem veriyoruz. Bu Gizlilik Politikası, www.kokvekanat.com internet sitesinin kullanımı sırasında kişisel verilerin hangi durumlarda işlenebileceği ve bu verilerin nasıl korunduğu hakkında bilgi vermek amacıyla hazırlanmıştır.</p>
+
+      <h4>1. Veri Sorumlusu</h4>
+      <p>6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında kişisel verileriniz, veri sorumlusu sıfatıyla aşağıdaki işletme tarafından işlenebilir:</p>
+      <p><strong>Kök &amp; Kanat</strong><br>
+      Veri Sorumlusu: Yasemin Bulut<br>
+      Marka / Faaliyet Adı: Kök &amp; Kanat<br>
+      Adres: Zühtüpaşa Mah., Şefikbey Sk., Archerson Köşkü No: 3, İçkapı No: 301, Kadıköy-İstanbul<br>
+      E-posta: yasemin@kokvekanat.com<br>
+      Telefon: 0546 291 15 90</p>
+
+      <h4>2. İnternet Sitesi Üzerinden Veri Toplanması</h4>
+      <p>Kök &amp; Kanat internet sitesinde ziyaretçilerin doğrudan kişisel bilgilerini girdiği bir üyelik veya kayıt sistemi bulunmamaktadır.</p>
+      <p>Ziyaretçiler, internet sitesinde yer alan iletişim bilgileri veya bağlantılar aracılığıyla Kök &amp; Kanat ile kendi tercihleri doğrultusunda WhatsApp, telefon veya e-posta üzerinden iletişime geçebilir.</p>
+      <p>Bu durumda kişinin kendisi tarafından paylaşılan ad-soyad, telefon numarası, e-posta adresi, iletişim içeriği ve atölye katılımıyla ilgili gerekli bilgiler, iletişimin yürütülmesi ve talebin karşılanması amacıyla işlenebilir.</p>
+
+      <h4>3. Kişisel Verilerin İşlenme Amaçları</h4>
+      <p>Kişisel verileriniz, gerekli olduğu ölçüde;</p>
+      <ul>
+        <li>sorularınızı ve bilgi taleplerinizi yanıtlamak,</li>
+        <li>Kök &amp; Kanat atölyeleri hakkında bilgi vermek,</li>
+        <li>atölye başvuru ve katılım süreçlerini yürütmek,</li>
+        <li>katılımcılarla gerekli iletişimi sağlamak,</li>
+        <li>talep ve şikâyetleri değerlendirmek,</li>
+        <li>yasal ve mali yükümlülükleri yerine getirmek</li>
+      </ul>
+      <p>amaçlarıyla işlenebilir. Kişisel veriler, bu amaçlarla bağlantılı, sınırlı ve ölçülü şekilde kullanılmaya özen gösterilerek işlenir.</p>
+
+      <h4>4. WhatsApp ve E-posta Üzerinden İletişim</h4>
+      <p>WhatsApp veya e-posta hizmetleri üzerinden gerçekleştirilen iletişimlerde, ilgili hizmet sağlayıcıların kendi gizlilik politikaları ve veri işleme koşulları da uygulanabilir.</p>
+
+      <h4>5. Çerezler ve Teknik Veriler</h4>
+      <p>İnternet sitesi, sitenin teknik olarak çalışması için gerekli teknolojileri kullanabilir. Ayrıca sitenin barındırıldığı altyapı veya kullanılan üçüncü taraf hizmetler tarafından IP adresi, tarayıcı türü, cihaz bilgisi ve ziyaret zamanı gibi sınırlı teknik veriler işlenebilir.</p>
+      <p>Analitik, reklam veya pazarlama amaçlı çerezler kullanılması halinde bu politika ve gerektiğinde çerez bilgilendirmesi buna uygun olarak güncellenecektir.</p>
+
+      <h4>6. Kişisel Verilerin Paylaşılması</h4>
+      <p>Kişisel verileriniz, kural olarak üçüncü kişilerle paylaşılmaz.</p>
+      <p>Ancak hizmetin yürütülmesi, teknik altyapının sağlanması, muhasebe ve yasal yükümlülüklerin yerine getirilmesi amacıyla gerekli olduğu ölçüde yetkili hizmet sağlayıcılar, mali müşavir veya kanunen yetkili kamu kurum ve kuruluşlarıyla paylaşılması söz konusu olabilir.</p>
+
+      <h4>7. Verilerin Saklanması</h4>
+      <p>Kişisel veriler, işlenme amacı için gerekli olan süre boyunca veya ilgili mevzuatta öngörülen yasal saklama süreleri boyunca muhafaza edilir.</p>
+      <p>Saklanmasını gerektiren hukuki bir sebep kalmadığında kişisel veriler mevzuata uygun şekilde silinir, yok edilir veya anonim hale getirilir.</p>
+
+      <h4>8. Kişisel Verilerin Korunması</h4>
+      <p>Kök &amp; Kanat, kişisel verilerin hukuka aykırı olarak işlenmesini veya erişilmesini önlemek ve kişisel verilerin güvenli şekilde muhafaza edilmesini sağlamak amacıyla uygun teknik ve idari tedbirleri almaya özen gösterir.</p>
+
+      <h4>9. Haklarınız</h4>
+      <p>Kişisel verilerinizle ilgili haklarınız ve bu hakların nasıl kullanılabileceği konusunda ayrıntılı bilgi için internet sitemizde yer alan KVKK Aydınlatma Metnini inceleyebilirsiniz.</p>
+
+      <h4>10. Değişiklikler</h4>
+      <p>Bu Gizlilik Politikası, internet sitesinde kullanılan hizmetlerin veya ilgili mevzuatın değişmesi halinde güncellenebilir. Güncel metin www.kokvekanat.com üzerinden yayımlanır.</p>
+
+      <h4>11. İletişim</h4>
+      <p>Gizlilik ve kişisel verilerinizle ilgili sorularınız için bizimle iletişime geçebilirsiniz:</p>
+      <p><strong>Kök &amp; Kanat</strong><br>
+      E-posta: yasemin@kokvekanat.com<br>
+      Telefon: 0546 291 15 90</p>
+
+      <p class="modal-updated">© 2026 Kök &amp; Kanat. Tüm hakları saklıdır.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-kvkk" data-modal-overlay aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-kvkk-title">
+    <button type="button" class="modal-close" data-close-modal aria-label="Kapat">×</button>
+    <div class="modal-body">
+      <h3 id="modal-kvkk-title">KVKK AYDINLATMA METNİ</h3>
+      <p class="modal-updated">Son güncelleme: Ağustos 2026</p>
+
+      <p>Kök &amp; Kanat olarak kişisel verilerinizin korunmasına önem veriyoruz. İşbu Aydınlatma Metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında kişisel verilerinizin işlenmesine ilişkin olarak sizleri bilgilendirmek amacıyla hazırlanmıştır.</p>
+
+      <h4>1. Veri Sorumlusu</h4>
+      <p>6698 sayılı KVKK kapsamında kişisel verileriniz aşağıda bilgileri bulunan veri sorumlusu tarafından işlenebilir:</p>
+      <p><strong>Kök &amp; Kanat</strong><br>
+      Veri Sorumlusu: Yasemin Bulut<br>
+      Marka / Faaliyet Adı: Kök &amp; Kanat<br>
+      Adres: Zühtüpaşa Mah., Şefikbey Sk., Archerson Köşkü No: 3, İçkapı No: 301, Kadıköy-İstanbul<br>
+      E-posta: yasemin@kokvekanat.com<br>
+      Telefon: 0546 291 15 90</p>
+
+      <h4>2. İşlenebilecek Kişisel Veriler</h4>
+      <p>Kök &amp; Kanat ile iletişime geçmeniz veya atölye hakkında bilgi talep etmeniz halinde, paylaşımınıza ve ilişkinin niteliğine bağlı olarak aşağıdaki kişisel verileriniz işlenebilir:</p>
+      <ul>
+        <li>ad ve soyad,</li>
+        <li>telefon numarası,</li>
+        <li>e-posta adresi,</li>
+        <li>iletişim ve yazışma bilgileri,</li>
+        <li>atölye başvuru ve katılımına ilişkin bilgiler,</li>
+        <li>ödeme ve faturalandırma sürecinin yürütülmesi halinde gerekli mali bilgiler,</li>
+        <li>tarafınızca kendi isteğinizle iletilen diğer bilgiler.</li>
+      </ul>
+      <p>İnternet sitesinde doğrudan kişisel veri girişi yapılan bir üyelik veya kayıt sistemi bulunmamaktadır.</p>
+
+      <h4>3. Kişisel Verilerin İşlenme Amaçları</h4>
+      <p>Kişisel verileriniz;</p>
+      <ul>
+        <li>Kök &amp; Kanat hakkında bilgi taleplerinin karşılanması,</li>
+        <li>atölyeler hakkında bilgilendirme yapılması,</li>
+        <li>başvuru ve katılım süreçlerinin yürütülmesi,</li>
+        <li>katılımcılarla iletişim kurulması,</li>
+        <li>organizasyon süreçlerinin yürütülmesi,</li>
+        <li>ödeme, muhasebe ve faturalandırma işlemlerinin gerçekleştirilmesi,</li>
+        <li>talep ve şikâyetlerin değerlendirilmesi,</li>
+        <li>hukuki ve mali yükümlülüklerin yerine getirilmesi</li>
+      </ul>
+      <p>amaçlarıyla işlenebilir.</p>
+
+      <h4>4. Kişisel Verilerin Toplanma Yöntemi ve Hukuki Sebebi</h4>
+      <p>Kişisel verileriniz; internet sitesinde bulunan iletişim bağlantıları, WhatsApp, telefon, e-posta ve doğrudan iletişim yoluyla elektronik veya fiziki ortamda elde edilebilir.</p>
+      <p>Kişisel verileriniz, KVKK'nın 5. maddesinde belirtilen hukuki sebepler kapsamında; özellikle bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması, veri sorumlusunun hukuki yükümlülüğünü yerine getirebilmesi, bir hakkın tesisi, kullanılması veya korunması için veri işlemenin zorunlu olması ve ilgili kişinin temel hak ve özgürlüklerine zarar vermemek kaydıyla veri sorumlusunun meşru menfaatleri için veri işlenmesinin zorunlu olması hukuki sebeplerine dayanılarak işlenebilir.</p>
+      <p>Açık rıza gerektiren bir veri işleme faaliyetinin söz konusu olması halinde ayrıca açık rızanız alınır.</p>
+
+      <h4>5. Kişisel Verilerin Aktarılması</h4>
+      <p>Kişisel verileriniz, işleme amaçlarının gerektirdiği ölçüde ve ilgili mevzuata uygun olarak;</p>
+      <ul>
+        <li>mali müşavir ve muhasebe hizmeti sağlayıcılarına,</li>
+        <li>teknik ve iletişim hizmeti sağlayıcılarına,</li>
+        <li>gerekli olması halinde hizmet alınan diğer yetkili kişi veya kuruluşlara,</li>
+        <li>kanunen yetkili kamu kurum ve kuruluşlarına</li>
+      </ul>
+      <p>aktarılabilir. Kişisel verilerin üçüncü kişilere aktarılmasında KVKK ve ilgili mevzuatta öngörülen şartlara uygun hareket edilir.</p>
+
+      <h4>6. Kişisel Verilerin Saklanması</h4>
+      <p>Kişisel verileriniz, işlenme amaçlarının gerektirdiği süre boyunca ve ilgili mevzuatta öngörülen yasal saklama süreleri çerçevesinde muhafaza edilir.</p>
+      <p>İşlenmesini gerektiren sebeplerin ortadan kalkması ve saklanmasını gerektiren başka bir hukuki yükümlülük bulunmaması halinde kişisel veriler mevzuata uygun şekilde silinir, yok edilir veya anonim hale getirilir.</p>
+
+      <h4>7. KVKK Kapsamındaki Haklarınız</h4>
+      <p>KVKK'nın 11. maddesi kapsamında kişisel verilerinize ilişkin olarak;</p>
+      <ul>
+        <li>kişisel verilerinizin işlenip işlenmediğini öğrenme,</li>
+        <li>işlenmişse buna ilişkin bilgi talep etme,</li>
+        <li>işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme,</li>
+        <li>yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme,</li>
+        <li>eksik veya yanlış işlenmiş olması halinde düzeltilmesini isteme,</li>
+        <li>KVKK'da öngörülen şartlar çerçevesinde kişisel verilerin silinmesini veya yok edilmesini isteme,</li>
+        <li>düzeltme, silme veya yok etme işlemlerinin kişisel verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme,</li>
+        <li>münhasıran otomatik sistemler aracılığıyla analiz edilmesi nedeniyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme,</li>
+        <li>kişisel verilerin kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız halinde zararın giderilmesini talep etme</li>
+      </ul>
+      <p>haklarına sahipsiniz.</p>
+
+      <h4>8. Başvuru</h4>
+      <p>KVKK kapsamındaki taleplerinizi, kimliğinizi ve talebinizi açıkça belirterek yasemin@kokvekanat.com adresine veya yukarıda belirtilen veri sorumlusu adresine iletebilirsiniz. Başvurular, ilgili mevzuatta belirtilen usul ve süreler çerçevesinde değerlendirilir.</p>
+
+      <p><strong>Kök &amp; Kanat</strong><br>
+      Veri Sorumlusu: Yasemin Bulut<br>
+      Marka / Faaliyet Adı: Kök &amp; Kanat<br>
+      Adres: Zühtüpaşa Mah., Şefikbey Sk., Archerson Köşkü No: 3, İçkapı No: 301, Kadıköy/İstanbul<br>
+      Telefon: 0546 291 15 90</p>
+
+      <p class="modal-updated">© 2026 Kök &amp; Kanat. Tüm hakları saklıdır.</p>
+    </div>
+  </div>
+</div>
 
 <script>
 /**
@@ -779,66 +1002,75 @@ h1, h2, h3, p { margin: 0; }
     'cta.explore': 'Explore the workshop ↓',
     'cta.write': 'Message on WhatsApp',
     'cta.justOpen': 'Just open WhatsApp',
-    'hero.eyebrow': 'Six-Week Guided Workshop · Istanbul',
-    'hero.title': 'You can\u2019t spread your wings<br>without knowing your roots.',
-    'hero.lede': 'A six-session self-reflection workshop designed to give this transition the time and attention it deserves, as you close one chapter of life and open the next.',
+    'hero.eyebrow': 'A Six-Session Structured Workshop · Istanbul',
+    'hero.title': 'You can\u2019t spread your wings without knowing your roots.',
+    'hero.lede': 'We don\u2019t always know how to move into the next chapter while one is closing. Kök &amp; Kanat is a six-session guided workshop \u2014 time for yourself to pause, look back on what\u2019s behind you, and move forward with more clarity.',
     'label.giris': 'Introduction',
-    'intro.quote': 'Some chapters end quietly. Without truly saying goodbye to them, it\u2019s hard to begin the next one.',
-    'intro.p1': 'Kök &amp; Kanat is not a therapy program. It\u2019s a guided educational and self-reflection experience for adults going through a career change, retirement, a move, or any closing chapter of life.',
-    'intro.p2': 'Over six weeks, together with a small group, you\u2019ll take the time to name what you\u2019re leaving behind, understand where you stand today, and step into what\u2019s next with a clearer mind.',
+    'intro.p0': 'Maybe a long career came to an end. Maybe the kids moved out, you moved to a new city, or a new chapter began in your life that doesn\u2019t have a name yet\u2026',
+    'intro.quote': 'Some chapters end quietly. Without looking back on what\u2019s behind you, starting the next one can be hard.',
+    'intro.p1': 'Kök &amp; Kanat is a guided, six-session workshop designed to help you look at your own story again during exactly this kind of transition.',
+    'intro.p2': 'Together with a small group, you take the time to notice what you\u2019re leaving behind, understand where you stand today, and move forward with more clarity.',
     'intro.imgCaption': 'Writing down, on a notebook page, what you\u2019re carrying that week.',
     'label.yolculuk': 'The Workshop Journey',
-    'journey.title': 'Six meetings, one transition',
-    'station1.h': 'Pausing',
-    'station1.p': 'Arriving at the group and the process. The first step to slowing down and truly stopping.',
-    'station2.h': 'Roots',
-    'station2.p': 'Noticing the stories, habits, and values that have carried you to today.',
-    'station3.h': 'Letting Go',
-    'station3.p': 'Telling apart what you\u2019re still carrying from what you can now set down.',
-    'station4.h': 'The Bead Ritual',
-    'station4.tag': 'Signature Practice',
-    'station4.p': 'The heart of the group: each participant turns a memory \u2014 one they\u2019re releasing or choosing to carry forward \u2014 into a bead they thread by hand.',
-    'station5.h': 'The Gap',
-    'station5.p': 'Learning to sit with what doesn\u2019t have a name yet \u2014 with uncertainty.',
-    'station6.h': 'Wing',
-    'station6.p': 'Stepping into the new chapter with what you carry, and a lighter load.',
-    'label.rehberiniz': 'Your Guide',
+    'journey.title': 'Look at your story again, in six sessions.',
+    'station1.h': 'The Start — My Roots',
+    'station1.sub': 'Stopping and looking.',
+    'station1.p': 'You first arrive where you are, slow down a little, and look back at the roots that brought you to today.',
+    'station2.h': 'Family and First Experiences',
+    'station2.sub': 'Looking at where the story began.',
+    'station2.p': 'You begin to notice the traces your family, relationships, and early experiences left on who you are today.',
+    'station3.h': 'Turning Points',
+    'station3.sub': 'Seeing the paths you\u2019ve taken.',
+    'station3.p': 'You look at the turning points on your timeline that changed you, shaped your direction, and made you who you are today.',
+    'station4.h': 'Repetitions',
+    'station4.sub': 'Noticing the connections.',
+    'station4.p': 'You take a closer look at patterns that repeat in your life, and the connections between the past and today.',
+    'station5.h': 'Who I Am Today',
+    'station5.sub': 'Seeing where you stand right now.',
+    'station5.p': 'You focus on your values, needs, and direction for what comes next, as you are today.',
+    'station6.h': 'Harvest',
+    'station6.sub': 'Choosing what to take with you.',
+    'station6.p': 'You bring together everything you noticed across the six sessions, and move forward by looking at what to leave behind and what to carry with you.',
+    'label.rehberiniz': 'Who Am I?',
     'about.caption': 'Yasemin Bulut<br>Education Scientist &amp; Founder of Kök &amp; Kanat',
-    'about.title': 'Education Scientist &amp; Founder of Kök &amp; Kanat',
-    'about.p1': 'Having devoted years to adult education and learning, Yasemin Hanım realized something after a profound transition in her own life: most people try to step into the next chapter without closing the last one.',
-    'about.p2': 'Kök &amp; Kanat is the intimate, small-group space she built by combining her background in education science with her own experience.',
+    'about.greeting': 'Hi, I\u2019m Yasemin.',
+    'about.title': 'I\u2019m an education scientist, the founder of Kök &amp; Kanat, and the one who leads the workshop.',
+    'about.p1': 'I\u2019ve spent many years working with people, families, and their life stories. My professional path began with a degree in pedagogy from the University of Cologne, and was shaped by my work with immigrant families, social and pedagogical counseling, three years of training in systemic and family therapy, and my experience in individual counseling.',
+    'about.p2': 'Kök &amp; Kanat was born, in part, out of that journey.',
+    'about.pathTitle': 'The road that brought me here',
+    'about.path.p1': 'Over the years, accompanying people through different chapters of their lives, I kept seeing the same thing: sometimes what we need isn\u2019t someone telling us which way to go \u2014 it\u2019s a space where we can pause, look at our own story again, and get closer to our own answers.',
+    'about.path.p2': 'Kök &amp; Kanat was born, in part, out of that thought.',
+    'about.path.p3': 'My role in this process is to open up a space \u2014 through creative exercises, questions, and sharing \u2014 where you can look at your own story again. Not to tell you which way to go.',
+    'about.path.p4': 'Having experienced pausing, looking again, and changing direction in my own life, I accompany this process with you over six sessions.',
     'label.detaylar': 'Details',
     'detail.tarih.h': 'Date',
-    'detail.tarih.p': '6 weeks, twice a month',
+    'detail.tarih.p': '6 sessions · Twice a month, on Sundays<br>September 20 \u2013 November 29, 2026<br>10:00 am\u20135:00 pm (incl. lunch break 1:00\u20132:00 pm)',
     'detail.yer.h': 'Location',
-    'detail.yer.p': 'Caferağa Medresesi, Istanbul',
+    'detail.yer.p': 'Caferağa Medresesi<br>Part of the Turkish Culture Service Foundation<br>Traditional Turkish Arts Education Center<br>Caferiye Sok., Soğukkuyu Çıkmazı No: 5<br>Sultanahmet, Fatih / Istanbul',
     'detail.grup.h': 'Group',
-    'detail.grup.p': 'Limited to 8\u201312 participants',
-    'venue.avlu.caption': 'The historic courtyard of Caferağa Medresesi',
-    'venue.seminer.caption': 'The stone-walled seminar room where the sessions take place',
+    'detail.grup.p': 'Limited to 8\u201312 participants<br>A small, carefully held group setting.',
+    'venue.avlu.caption': 'Caferağa Medresesi, a corner of the historic courtyard',
+    'venue.seminer.caption': 'The workshop space where our sessions take place',
     'label.faq': 'Frequently Asked Questions',
-    'faq1.q': 'Is this therapy?',
-    'faq1.a': 'No. Kök &amp; Kanat is an education-based, guided, structured self-reflection workshop. It helps participants look at their life story from a different angle. It is not therapy or a clinical intervention.',
-    'faq2.q': 'How can I join?',
-    'faq2.a': 'Just message us on WhatsApp. After a short initial conversation, we\u2019ll tell you about the workshop, check availability together, and complete registration together.',
-    'faq3.q': 'What are the payment and cancellation terms?',
-    'faq3.a': 'Registration is confirmed with a deposit. The remaining payment plan and cancellation terms are shared with you transparently before registration, so you know all the details before starting.',
-    'faq4.q': 'What exactly is Kök &amp; Kanat?',
-    'faq4.a': 'Kök &amp; Kanat is an education-based, guided self-reflection workshop that helps you look at your life story from a new perspective.',
-    'faq5.q': 'Who can take part?',
-    'faq5.a': 'Adults who want to get to know themselves better, make sense of turning points in their life, and gain a new perspective are welcome.',
-    'faq6.q': 'Can I cancel?',
-    'faq6.a': 'Cancellation and refund terms are shared in detail before registration.',
-    'faq7.q': 'Do I have to share my life story in front of everyone?',
-    'faq7.a': 'No. You always decide the limits of what you share. Sharing only as much as you feel ready for is enough.',
+    'faq1.q': 'What exactly is Kök &amp; Kanat?',
+    'faq1.a': 'Kök &amp; Kanat is a structured workshop program made up of six sessions, where you can look at your own life story step by step and notice and make sense of the experiences that have shaped you from the past to today.',
+    'faq2.q': 'Who can take part?',
+    'faq2.a': 'Adults who want to get to know themselves better, look again at the turning points and things they carry from the past into today, and move forward with more clarity are welcome to join.',
+    'faq3.q': 'Is this therapy?',
+    'faq3.a': 'No. Kök &amp; Kanat is an education-based, structured self-reflection workshop. It helps participants look at their life stories from different angles and make sense of their own experiences. It is not therapy or a clinical intervention.',
+    'faq4.q': 'How can I join?',
+    'faq4.a': 'Just message me on WhatsApp. In a short initial conversation, I\u2019ll tell you about the workshop, answer your questions, and we\u2019ll check availability together. Once you decide to join, we complete registration.',
+    'faq5.q': 'What are the payment and cancellation terms?',
+    'faq5.a': 'Registration is confirmed with a deposit. The remaining payment plan and cancellation terms are shared with you openly before registration, so you know all the details before starting.',
     'finalcta.title': 'We begin on September 20th.',
-    'finalcta.p': 'Spots are limited. Message Yasemin Hanım with any questions, or to register directly.',
-    'footer.tagline': 'A workshop for transitioning into a new chapter',
-    'footer.taxLine': 'Tax Office / Tax ID: [Placeholder]',
+    'finalcta.p': 'The first group is limited to 8\u201312 people. Message me on WhatsApp with any questions or to register.',
+    'footer.tagline': 'Touch your story.',
+    'footer.addressCode': 'Address Code: 2273816203',
+    'footer.taxLine': 'Tax Office: Göztepe Tax Office',
     'footer.email': 'Email',
     'footer.tel': 'Phone',
-    'footer.privacy': 'Privacy Policy (placeholder)',
-    'footer.kvkk': 'Data Protection Notice / KVKK (placeholder)',
+    'footer.privacy': 'Privacy Policy',
+    'footer.kvkk': 'Data Protection Notice (KVKK)',
     'footer.rights': 'All rights reserved.'
   };
 
@@ -877,12 +1109,65 @@ h1, h2, h3, p { margin: 0; }
     if (saved === 'en') applyLanguage('en');
   }
 
+  /* ---------------------------------------------
+   * Legal document modals (Gizlilik Politikası,
+   * KVKK Aydınlatma Metni)
+   * ------------------------------------------- */
+  function initLegalModals() {
+    var openButtons = document.querySelectorAll('[data-open-modal]');
+    var overlays = document.querySelectorAll('[data-modal-overlay]');
+    if (!openButtons.length || !overlays.length) return;
+
+    var lastFocused = null;
+
+    function openModal(id) {
+      var overlay = document.getElementById('modal-' + id);
+      if (!overlay) return;
+      lastFocused = document.activeElement;
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      var closeBtn = overlay.querySelector('[data-close-modal]');
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal(overlay) {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    }
+
+    openButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        openModal(btn.getAttribute('data-open-modal'));
+      });
+    });
+
+    overlays.forEach(function (overlay) {
+      overlay.querySelectorAll('[data-close-modal]').forEach(function (btn) {
+        btn.addEventListener('click', function () { closeModal(overlay); });
+      });
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeModal(overlay);
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      overlays.forEach(function (overlay) {
+        if (overlay.classList.contains('is-open')) closeModal(overlay);
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initWhatsAppLinks();
     initMobileNav();
     initHeaderScrollState();
     initScrollReveal();
     initLanguageSwitch();
+    initLegalModals();
   });
 })();
 </script>
