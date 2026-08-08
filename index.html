@@ -137,6 +137,30 @@ h1, h2, h3, p { margin: 0; }
 
 .header-cta { display: none; margin-left: auto; white-space: nowrap; }
 
+/* Language switch — sliding pill indicator */
+.lang-switch {
+  position: relative; display: inline-flex; border: 1px solid var(--color-line); border-radius: 999px;
+  padding: 2px; margin-left: var(--space-3); flex-shrink: 0;
+}
+.lang-indicator {
+  position: absolute; top: 2px; bottom: 2px; left: 2px; width: calc(50% - 2px);
+  background: var(--color-ink); border-radius: 999px; z-index: 0;
+  transition: transform 0.45s var(--ease);
+}
+.lang-switch.is-en .lang-indicator { transform: translateX(100%); }
+.lang-btn {
+  position: relative; z-index: 1;
+  border: none; background: transparent; cursor: pointer;
+  font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--color-ink); opacity: 0.55; padding: 0.3rem 0.65rem; border-radius: 999px;
+  transition: opacity 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.lang-btn:hover { opacity: 0.85; }
+.lang-btn.is-active { opacity: 1; color: var(--color-paper); transform: scale(1.12); }
+@media (prefers-reduced-motion: reduce) {
+  .lang-indicator, .lang-btn { transition: none; }
+}
+
 .nav-toggle {
   margin-left: auto;
   width: 36px; height: 28px;
@@ -383,22 +407,27 @@ h1, h2, h3, p { margin: 0; }
   <div class="wrap header-inner">
     <a href="#" class="logo">Kök <span class="logo-amp">&amp;</span> Kanat</a>
     <nav class="main-nav" aria-label="Ana menü">
-      <a href="#atolye">Atölye</a>
-      <a href="#yasemin">Yasemin Bulut</a>
-      <a href="#detaylar">Detaylar</a>
+      <a href="#atolye" data-i18n="nav.atolye">Atölye</a>
+      <a href="#yasemin" data-i18n="nav.yasemin">Yasemin Hanım</a>
+      <a href="#detaylar" data-i18n="nav.detaylar">Detaylar</a>
       <a href="#faq">FAQ</a>
     </nav>
+    <div class="lang-switch" data-lang-switch role="group" aria-label="Dil / Language">
+      <span class="lang-indicator" aria-hidden="true"></span>
+      <button type="button" class="lang-btn is-active" data-lang="tr">TR</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
     <a class="btn btn-ghost header-cta" data-wa="a" href="#">WhatsApp</a>
     <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Menüyü aç">
       <span></span><span></span><span></span>
     </button>
   </div>
   <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobil menü">
-    <a href="#atolye">Atölye</a>
-    <a href="#yasemin">Yasemin Hanım</a>
-    <a href="#detaylar">Detaylar</a>
+    <a href="#atolye" data-i18n="nav.atolye">Atölye</a>
+    <a href="#yasemin" data-i18n="nav.yasemin">Yasemin Hanım</a>
+    <a href="#detaylar" data-i18n="nav.detaylar">Detaylar</a>
     <a href="#faq">FAQ</a>
-    <a class="btn btn-primary" data-wa="a" href="#">WhatsApp'tan Yazın</a>
+    <a class="btn btn-primary" data-wa="a" href="#" data-i18n="cta.write">WhatsApp'tan Yazın</a>
   </nav>
 </header>
 
@@ -407,12 +436,12 @@ h1, h2, h3, p { margin: 0; }
   <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
-      <p class="eyebrow">Altı Haftalık Rehberli Atölye · İstanbul</p>
-      <h1 class="hero-title">Köklerinizi bilmeden<br>kanat açılmaz.</h1>
-      <p class="hero-lede">Hayatın bir bölümünü kapatıp yenisini açarken, bu geçişe zaman ve dikkat ayırmak için tasarlanmış, altı buluşmalık bir öz-yansıma atölyesi.</p>
+      <p class="eyebrow" data-i18n="hero.eyebrow">Altı Haftalık Rehberli Atölye · İstanbul</p>
+      <h1 class="hero-title" data-i18n="hero.title">Köklerinizi bilmeden<br>kanat açılmaz.</h1>
+      <p class="hero-lede" data-i18n="hero.lede">Hayatın bir bölümünü kapatıp yenisini açarken, bu geçişe zaman ve dikkat ayırmak için tasarlanmış, altı buluşmalık bir öz-yansıma atölyesi.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" data-wa="a" href="#">WhatsApp'tan Bilgi Alın</a>
-        <a class="btn-link" href="#atolye">Atölyeyi keşfedin ↓</a>
+        <a class="btn btn-primary" data-wa="a" href="#" data-i18n="cta.info">WhatsApp'tan Bilgi Alın</a>
+        <a class="btn-link" href="#atolye" data-i18n="cta.explore">Atölyeyi keşfedin ↓</a>
       </div>
     </div>
   </section>
@@ -426,18 +455,18 @@ h1, h2, h3, p { margin: 0; }
   <!-- INTRO -->
   <section class="section intro" id="giris">
     <div class="wrap intro-grid">
-      <p class="section-label"><span class="section-label-text">Giriş</span></p>
+      <p class="section-label"><span class="section-label-text" data-i18n="label.giris">Giriş</span></p>
       <div class="intro-body">
         <div class="intro-copy">
           <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-          <p class="pull-quote">Bazı bölümler sessizce biter. Onlara doğru bir veda söylemeden, yenisine başlamak zorlaşır.</p>
-          <p>Kök &amp; Kanat bir terapi programı değildir. Kariyer değişimi, emeklilik, taşınma ya da hayatın herhangi bir kapanış anı yaşayan yetişkinler için tasarlanmış, rehberli bir eğitim ve öz-yansıma deneyimidir.</p>
-          <p>Altı hafta boyunca, küçük bir grupla birlikte; geride bıraktıklarınızı adlandırmak, bugün durduğunuz yeri anlamak ve önünüzdeki bölüme daha berrak bir zihinle adım atmak için zaman ayırırsınız.</p>
+          <p class="pull-quote" data-i18n="intro.quote">Bazı bölümler sessizce biter. Onlara doğru bir veda söylemeden, yenisine başlamak zorlaşır.</p>
+          <p data-i18n="intro.p1">Kök &amp; Kanat bir terapi programı değildir. Kariyer değişimi, emeklilik, taşınma ya da hayatın herhangi bir kapanış anı yaşayan yetişkinler için tasarlanmış, rehberli bir eğitim ve öz-yansıma deneyimidir.</p>
+          <p data-i18n="intro.p2">Altı hafta boyunca, küçük bir grupla birlikte; geride bıraktıklarınızı adlandırmak, bugün durduğunuz yeri anlamak ve önünüzdeki bölüme daha berrak bir zihinle adım atmak için zaman ayırırsınız.</p>
         </div>
         <figure class="intro-image photo-frame">
           <div class="photo-frame-inner aspect-portrait">
             <img src="gunluk-yakin-cekim.jpg" alt="Bir defter sayfasına yazı yazan elin yakın çekimi" loading="lazy">
-            <figcaption>Bir defter sayfasına, o hafta taşıdıklarınızı yazdığınız an.</figcaption>
+            <figcaption data-i18n="intro.imgCaption">Bir defter sayfasına, o hafta taşıdıklarınızı yazdığınız an.</figcaption>
           </div>
         </figure>
       </div>
@@ -453,49 +482,49 @@ h1, h2, h3, p { margin: 0; }
   <!-- JOURNEY -->
   <section class="section journey" id="atolye">
     <div class="wrap">
-      <p class="section-label"><span class="section-label-text">Atölye Yolculuğu</span></p>
-      <h2 class="section-title">Altı buluşma, tek bir geçiş</h2>
+      <p class="section-label"><span class="section-label-text" data-i18n="label.yolculuk">Atölye Yolculuğu</span></p>
+      <h2 class="section-title" data-i18n="journey.title">Altı buluşma, tek bir geçiş</h2>
       <ol class="stations">
         <li class="station">
           <span class="station-no">I</span>
           <div>
-            <h3>Duraklama</h3>
-            <p>Gruba ve sürece varış. Hızını kesmek ve gerçekten durmak için ilk adım.</p>
+            <h3 data-i18n="station1.h">Duraklama</h3>
+            <p data-i18n="station1.p">Gruba ve sürece varış. Hızını kesmek ve gerçekten durmak için ilk adım.</p>
           </div>
         </li>
         <li class="station">
           <span class="station-no">II</span>
           <div>
-            <h3>Kökler</h3>
-            <p>Bugüne kadar sizi taşıyan hikâyeleri, alışkanlıkları ve değerleri fark etmek.</p>
+            <h3 data-i18n="station2.h">Kökler</h3>
+            <p data-i18n="station2.p">Bugüne kadar sizi taşıyan hikâyeleri, alışkanlıkları ve değerleri fark etmek.</p>
           </div>
         </li>
         <li class="station">
           <span class="station-no">III</span>
           <div>
-            <h3>Bırakma</h3>
-            <p>Taşımaya devam ettiğiniz ve artık bırakabileceğiniz şeyleri ayırt etmek.</p>
+            <h3 data-i18n="station3.h">Bırakma</h3>
+            <p data-i18n="station3.p">Taşımaya devam ettiğiniz ve artık bırakabileceğiniz şeyleri ayırt etmek.</p>
           </div>
         </li>
         <li class="station station-signature">
           <span class="station-no">IV</span>
           <div>
-            <h3>Boncuk Ritüeli <span class="signature-tag">İmza Uygulama</span></h3>
-            <p>Grubun kalbindeki an: her katılımcı, bıraktığı ya da yanında taşımaya karar verdiği bir anıyı elle dizdiği bir boncuğa dönüştürür.</p>
+            <h3><span data-i18n="station4.h">Boncuk Ritüeli</span> <span class="signature-tag" data-i18n="station4.tag">İmza Uygulama</span></h3>
+            <p data-i18n="station4.p">Grubun kalbindeki an: her katılımcı, bıraktığı ya da yanında taşımaya karar verdiği bir anıyı elle dizdiği bir boncuğa dönüştürür.</p>
           </div>
         </li>
         <li class="station">
           <span class="station-no">V</span>
           <div>
-            <h3>Boşluk</h3>
-            <p>Henüz adı konmamış olanla, belirsizlikle oturmayı öğrenmek.</p>
+            <h3 data-i18n="station5.h">Boşluk</h3>
+            <p data-i18n="station5.p">Henüz adı konmamış olanla, belirsizlikle oturmayı öğrenmek.</p>
           </div>
         </li>
         <li class="station">
           <span class="station-no">VI</span>
           <div>
-            <h3>Kanat</h3>
-            <p>Yeni bölüme, elinizdekilerle ve daha hafif bir yükle adım atmak.</p>
+            <h3 data-i18n="station6.h">Kanat</h3>
+            <p data-i18n="station6.p">Yeni bölüme, elinizdekilerle ve daha hafif bir yükle adım atmak.</p>
           </div>
         </li>
       </ol>
@@ -514,15 +543,15 @@ h1, h2, h3, p { margin: 0; }
       <div class="about-media photo-frame">
         <div class="photo-frame-inner aspect-portrait">
           <img src="yasemin.jpg" alt="Yasemin Hanım'ın portresi" loading="lazy">
-          <figcaption>Yasemin Bulut<br>Eğitim Bilimci &amp; Kök &amp; Kanat'ın Kurucusu</figcaption>
+          <figcaption data-i18n="about.caption">Yasemin Bulut<br>Eğitim Bilimci &amp; Kök &amp; Kanat'ın Kurucusu</figcaption>
         </div>
       </div>
       <div class="about-copy">
-        <p class="section-label"><span class="section-label-text">Rehberiniz</span></p>
+        <p class="section-label"><span class="section-label-text" data-i18n="label.rehberiniz">Rehberiniz</span></p>
         <h2 class="section-title">Yasemin Hanım</h2>
-        <p class="about-title">Eğitim Bilimci &amp; Kök &amp; Kanat'ın Kurucusu</p>
-        <p>Yıllarını yetişkin eğitimine ve öğrenme süreçlerine adayan Yasemin Hanım, kendi hayatındaki köklü bir geçişin ardından fark etti: insanların çoğu, bir bölümü kapatmadan diğerine geçmeye çalışıyor.</p>
-        <p>Kök &amp; Kanat, onun eğitim bilimindeki birikimini kendi deneyimiyle birleştirerek kurduğu, küçük gruplarla yürütülen samimi bir alan.</p>
+        <p class="about-title" data-i18n="about.title">Eğitim Bilimci &amp; Kök &amp; Kanat'ın Kurucusu</p>
+        <p data-i18n="about.p1">Yıllarını yetişkin eğitimine ve öğrenme süreçlerine adayan Yasemin Hanım, kendi hayatındaki köklü bir geçişin ardından fark etti: insanların çoğu, bir bölümü kapatmadan diğerine geçmeye çalışıyor.</p>
+        <p data-i18n="about.p2">Kök &amp; Kanat, onun eğitim bilimindeki birikimini kendi deneyimiyle birleştirerek kurduğu, küçük gruplarla yürütülen samimi bir alan.</p>
       </div>
     </div>
   </section>
@@ -536,19 +565,19 @@ h1, h2, h3, p { margin: 0; }
   <!-- DETAILS -->
   <section class="section details" id="detaylar">
     <div class="wrap">
-      <p class="section-label"><span class="section-label-text">Detaylar</span></p>
+      <p class="section-label"><span class="section-label-text" data-i18n="label.detaylar">Detaylar</span></p>
       <div class="details-grid">
         <div class="detail-item">
-          <h3>Tarih</h3>
-          <p>6 hafta, ayda iki buluşma</p>
+          <h3 data-i18n="detail.tarih.h">Tarih</h3>
+          <p data-i18n="detail.tarih.p">6 hafta, ayda ili buluşma</p>
         </div>
         <div class="detail-item">
-          <h3>Yer</h3>
-          <p>Caferağa Medresesi, İstanbul</p>
+          <h3 data-i18n="detail.yer.h">Yer</h3>
+          <p data-i18n="detail.yer.p">Caferağa Medresesi, İstanbul</p>
         </div>
         <div class="detail-item">
-          <h3>Grup</h3>
-          <p>8–12 katılımcı ile sınırlı</p>
+          <h3 data-i18n="detail.grup.h">Grup</h3>
+          <p data-i18n="detail.grup.p">8–12 katılımcı ile sınırlı</p>
         </div>
       </div>
 
@@ -556,13 +585,13 @@ h1, h2, h3, p { margin: 0; }
         <figure class="venue-photo photo-frame">
           <div class="photo-frame-inner aspect-landscape">
             <img src="mekan-avlu.jpg" alt="Caferağa Medresesi'nin avlusu" loading="lazy">
-            <figcaption>Caferağa Medresesi'nin tarihi avlusu</figcaption>
+            <figcaption data-i18n="venue.avlu.caption">Caferağa Medresesi'nin tarihi avlusu</figcaption>
           </div>
         </figure>
         <figure class="venue-photo photo-frame">
           <div class="photo-frame-inner aspect-landscape">
             <img src="mekan-seminer-odasi.jpg" alt="Atölyenin yapıldığı taş duvarlı seminer odası" loading="lazy">
-            <figcaption>Buluşmaların yapıldığı taş duvarlı seminer odası</figcaption>
+            <figcaption data-i18n="venue.seminer.caption">Buluşmaların yapıldığı taş duvarlı seminer odası</figcaption>
           </div>
         </figure>
       </div>
@@ -578,27 +607,35 @@ h1, h2, h3, p { margin: 0; }
   <!-- FAQ -->
   <section class="section faq" id="faq">
     <div class="wrap">
-      <p class="section-label"><span class="section-label-text">Sık Sorulan Sorular</span></p>
+      <p class="section-label"><span class="section-label-text" data-i18n="label.faq">Sık Sorulan Sorular</span></p>
       <div class="faq-list">
         <details class="faq-item">
-          <summary>Bu bir terapi mi?</summary>
-          <p>Hayır. Kök &amp; Kanat; eğitim temelli, rehberli ve yapılandırılmış bir öz-yansıma atölyesidir. Katılımcıların yaşam hikâyelerine farklı bir gözle bakmalarını destekler. Terapi veya klinik bir müdahale değildir.</p>
+          <summary data-i18n="faq1.q">Bu bir terapi mi?</summary>
+          <p data-i18n="faq1.a">Hayır. Kök &amp; Kanat; eğitim temelli, rehberli ve yapılandırılmış bir öz-yansıma atölyesidir. Katılımcıların yaşam hikâyelerine farklı bir gözle bakmalarını destekler. Terapi veya klinik bir müdahale değildir.</p>
         </details>
         <details class="faq-item">
-          <summary>Nasıl katılabilirim?</summary>
-          <p>WhatsApp üzerinden bize yazmanız yeterlidir. Kısa bir ön görüşmenin ardından atölye hakkında sizi bilgilendiriyor, kontenjan durumunu birlikte değerlendiriyor ve kayıt sürecini birlikte tamamlıyoruz.</p>
+          <summary data-i18n="faq2.q">Nasıl katılabilirim?</summary>
+          <p data-i18n="faq2.a">WhatsApp üzerinden bize yazmanız yeterlidir. Kısa bir ön görüşmenin ardından atölye hakkında sizi bilgilendiriyor, kontenjan durumunu birlikte değerlendiriyor ve kayıt sürecini birlikte tamamlıyoruz.</p>
         </details>
         <details class="faq-item">
-          <summary>Ödeme ve iptal koşulları nasıl?</summary>
-          <p>Kayıt, ön ödeme ile kesinleşir. Kalan ödeme planı ve iptal koşulları kayıt öncesinde sizinle şeffaf şekilde paylaşılır. Böylece sürece başlamadan önce tüm detayları net olarak bilirsiniz.</p>
+          <summary data-i18n="faq3.q">Ödeme ve iptal koşulları nasıl?</summary>
+          <p data-i18n="faq3.a">Kayıt, ön ödeme ile kesinleşir. Kalan ödeme planı ve iptal koşulları kayıt öncesinde sizinle şeffaf şekilde paylaşılır. Böylece sürece başlamadan önce tüm detayları net olarak bilirsiniz.</p>
         </details>
         <details class="faq-item">
-          <summary>Kök &amp; Kanat tam olarak nedir?</summary>
-          <p>Kök &amp; Kanat; yaşam hikâyene farklı bir gözle bakmanı sağlayan, eğitim temelli ve rehberli bir öz-yansıma atölyesidir.</p>
+          <summary data-i18n="faq4.q">Kök &amp; Kanat tam olarak nedir?</summary>
+          <p data-i18n="faq4.a">Kök &amp; Kanat; yaşam hikâyene farklı bir gözle bakmanı sağlayan, eğitim temelli ve rehberli bir öz-yansıma atölyesidir.</p>
         </details>
         <details class="faq-item">
-          <summary>Kimler katılabilir?</summary>
-          <p>Kendini daha iyi tanımak, hayatındaki dönüm noktalarını anlamlandırmak ve yeni bir bakış açısı kazanmak isteyen yetişkinler katılabilir.</p>
+          <summary data-i18n="faq5.q">Kimler katılabilir?</summary>
+          <p data-i18n="faq5.a">Kendini daha iyi tanımak, hayatındaki dönüm noktalarını anlamlandırmak ve yeni bir bakış açısı kazanmak isteyen yetişkinler katılabilir.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq6.q">İptal edebilir miyim?</summary>
+          <p data-i18n="faq6.a">İptal ve iade koşulları kayıt öncesinde ayrıntılı olarak paylaşılır.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq7.q">Herkesin önünde hayat hikâyemi anlatmak zorunda mıyım?</summary>
+          <p data-i18n="faq7.a">Hayır. Paylaşımın sınırlarını her zaman sen belirlersin. Kendini hazır hissettiğin kadarını paylaşman yeterlidir.</p>
         </details>
       </div>
     </div>
@@ -613,9 +650,9 @@ h1, h2, h3, p { margin: 0; }
   <!-- FINAL CTA -->
   <section class="section final-cta">
     <div class="wrap">
-      <h2 class="section-title">20 Eylül'de başlıyoruz.</h2>
-      <p>Yer sınırlı. Sorularınızla ya da doğrudan katılım için Yasemin Hanım'a yazın.</p>
-      <a class="btn btn-primary btn-large" data-wa="a" href="#">WhatsApp'tan Yazın</a>
+      <h2 class="section-title" data-i18n="finalcta.title">20 Eylül'de başlıyoruz.</h2>
+      <p data-i18n="finalcta.p">Yer sınırlı. Sorularınızla ya da doğrudan katılım için Yasemin Hanım'a yazın.</p>
+      <a class="btn btn-primary btn-large" data-wa="a" href="#" data-i18n="cta.write">WhatsApp'tan Yazın</a>
     </div>
   </section>
 
@@ -625,26 +662,26 @@ h1, h2, h3, p { margin: 0; }
   <div class="wrap footer-grid">
     <div>
       <p class="logo footer-logo">Kök &amp; Kanat</p>
-      <p class="footer-note">Yeni bir bölüme geçiş atölyesi</p>
+      <p class="footer-note" data-i18n="footer.tagline">Yeni bir bölüme geçiş atölyesi</p>
     </div>
     <div class="footer-legal">
       <p>[Şirket/İşletme Unvanı Placeholder]</p>
       <p>[Adres Placeholder], İstanbul</p>
-      <p>Vergi Dairesi / Vergi No: [Placeholder]</p>
+      <p data-i18n="footer.taxLine">Vergi Dairesi / Vergi No: [Placeholder]</p>
       <p>Mersis No: [Placeholder]</p>
-      <p>E-posta: <a href="mailto:yasemin@kokvekanat.com">yasemin@kokvekanat.com</a> · Tel: <a href="tel:+905462911590">(0) 546 2911590</a></p>
+      <p><span data-i18n="footer.email">E-posta</span>: <a href="mailto:yasemin@kokvekanat.com">yasemin@kokvekanat.com</a> · <span data-i18n="footer.tel">Tel</span>: <a href="tel:+905462911590">(0) 546 2911590</a></p>
     </div>
     <div class="footer-links">
-      <a href="#" data-wa="b">Sadece WhatsApp'ı aç</a>
+      <a href="#" data-wa="b" data-i18n="cta.justOpen">Sadece WhatsApp'ı aç</a>
       <a href="https://www.instagram.com/kokvekanat.atolye" target="_blank" rel="noopener noreferrer">Instagram: @kokvekanat.atolye</a>
-      <a href="#">Gizlilik Politikası (yer tutucu)</a>
-      <a href="#">KVKK Aydınlatma Metni (yer tutucu)</a>
+      <a href="#" data-i18n="footer.privacy">Gizlilik Politikası (yer tutucu)</a>
+      <a href="#" data-i18n="footer.kvkk">KVKK Aydınlatma Metni (yer tutucu)</a>
     </div>
   </div>
-  <p class="footer-copy">© 2026 Kök &amp; Kanat. Tüm hakları saklıdır.</p>
+  <p class="footer-copy">© 2026 Kök &amp; Kanat. <span data-i18n="footer.rights">Tüm hakları saklıdır.</span></p>
 </footer>
 
-<a class="mobile-sticky-cta" data-wa="a" href="#">WhatsApp'tan Yazın</a>
+<a class="mobile-sticky-cta" data-wa="a" href="#" data-i18n="cta.write">WhatsApp'tan Yazın</a>
 
 <script>
 /**
@@ -724,11 +761,128 @@ h1, h2, h3, p { margin: 0; }
     targets.forEach(function (el) { observer.observe(el); });
   }
 
+  /* ---------------------------------------------
+   * Language switch (TR / EN)
+   * Every element with a data-i18n key gets its
+   * innerHTML swapped between its original Turkish
+   * markup and the English string below. No reload,
+   * no build step — pure vanilla JS.
+   * ------------------------------------------- */
+  var TITLE_TR = 'Kök & Kanat — Yeni Bir Bölüme Geçiş Atölyesi';
+  var TITLE_EN = 'Kök & Kanat — A Workshop for Transitioning into a New Chapter';
+
+  var TRANSLATIONS = {
+    'nav.atolye': 'Workshop',
+    'nav.yasemin': 'Yasemin Hanım',
+    'nav.detaylar': 'Details',
+    'cta.info': 'Ask on WhatsApp',
+    'cta.explore': 'Explore the workshop ↓',
+    'cta.write': 'Message on WhatsApp',
+    'cta.justOpen': 'Just open WhatsApp',
+    'hero.eyebrow': 'Six-Week Guided Workshop · Istanbul',
+    'hero.title': 'You can\u2019t spread your wings<br>without knowing your roots.',
+    'hero.lede': 'A six-session self-reflection workshop designed to give this transition the time and attention it deserves, as you close one chapter of life and open the next.',
+    'label.giris': 'Introduction',
+    'intro.quote': 'Some chapters end quietly. Without truly saying goodbye to them, it\u2019s hard to begin the next one.',
+    'intro.p1': 'Kök &amp; Kanat is not a therapy program. It\u2019s a guided educational and self-reflection experience for adults going through a career change, retirement, a move, or any closing chapter of life.',
+    'intro.p2': 'Over six weeks, together with a small group, you\u2019ll take the time to name what you\u2019re leaving behind, understand where you stand today, and step into what\u2019s next with a clearer mind.',
+    'intro.imgCaption': 'Writing down, on a notebook page, what you\u2019re carrying that week.',
+    'label.yolculuk': 'The Workshop Journey',
+    'journey.title': 'Six meetings, one transition',
+    'station1.h': 'Pausing',
+    'station1.p': 'Arriving at the group and the process. The first step to slowing down and truly stopping.',
+    'station2.h': 'Roots',
+    'station2.p': 'Noticing the stories, habits, and values that have carried you to today.',
+    'station3.h': 'Letting Go',
+    'station3.p': 'Telling apart what you\u2019re still carrying from what you can now set down.',
+    'station4.h': 'The Bead Ritual',
+    'station4.tag': 'Signature Practice',
+    'station4.p': 'The heart of the group: each participant turns a memory \u2014 one they\u2019re releasing or choosing to carry forward \u2014 into a bead they thread by hand.',
+    'station5.h': 'The Gap',
+    'station5.p': 'Learning to sit with what doesn\u2019t have a name yet \u2014 with uncertainty.',
+    'station6.h': 'Wing',
+    'station6.p': 'Stepping into the new chapter with what you carry, and a lighter load.',
+    'label.rehberiniz': 'Your Guide',
+    'about.caption': 'Yasemin Bulut<br>Education Scientist &amp; Founder of Kök &amp; Kanat',
+    'about.title': 'Education Scientist &amp; Founder of Kök &amp; Kanat',
+    'about.p1': 'Having devoted years to adult education and learning, Yasemin Hanım realized something after a profound transition in her own life: most people try to step into the next chapter without closing the last one.',
+    'about.p2': 'Kök &amp; Kanat is the intimate, small-group space she built by combining her background in education science with her own experience.',
+    'label.detaylar': 'Details',
+    'detail.tarih.h': 'Date',
+    'detail.tarih.p': '6 weeks, twice a month',
+    'detail.yer.h': 'Location',
+    'detail.yer.p': 'Caferağa Medresesi, Istanbul',
+    'detail.grup.h': 'Group',
+    'detail.grup.p': 'Limited to 8\u201312 participants',
+    'venue.avlu.caption': 'The historic courtyard of Caferağa Medresesi',
+    'venue.seminer.caption': 'The stone-walled seminar room where the sessions take place',
+    'label.faq': 'Frequently Asked Questions',
+    'faq1.q': 'Is this therapy?',
+    'faq1.a': 'No. Kök &amp; Kanat is an education-based, guided, structured self-reflection workshop. It helps participants look at their life story from a different angle. It is not therapy or a clinical intervention.',
+    'faq2.q': 'How can I join?',
+    'faq2.a': 'Just message us on WhatsApp. After a short initial conversation, we\u2019ll tell you about the workshop, check availability together, and complete registration together.',
+    'faq3.q': 'What are the payment and cancellation terms?',
+    'faq3.a': 'Registration is confirmed with a deposit. The remaining payment plan and cancellation terms are shared with you transparently before registration, so you know all the details before starting.',
+    'faq4.q': 'What exactly is Kök &amp; Kanat?',
+    'faq4.a': 'Kök &amp; Kanat is an education-based, guided self-reflection workshop that helps you look at your life story from a new perspective.',
+    'faq5.q': 'Who can take part?',
+    'faq5.a': 'Adults who want to get to know themselves better, make sense of turning points in their life, and gain a new perspective are welcome.',
+    'faq6.q': 'Can I cancel?',
+    'faq6.a': 'Cancellation and refund terms are shared in detail before registration.',
+    'faq7.q': 'Do I have to share my life story in front of everyone?',
+    'faq7.a': 'No. You always decide the limits of what you share. Sharing only as much as you feel ready for is enough.',
+    'finalcta.title': 'We begin on September 20th.',
+    'finalcta.p': 'Spots are limited. Message Yasemin Hanım with any questions, or to register directly.',
+    'footer.tagline': 'A workshop for transitioning into a new chapter',
+    'footer.taxLine': 'Tax Office / Tax ID: [Placeholder]',
+    'footer.email': 'Email',
+    'footer.tel': 'Phone',
+    'footer.privacy': 'Privacy Policy (placeholder)',
+    'footer.kvkk': 'Data Protection Notice / KVKK (placeholder)',
+    'footer.rights': 'All rights reserved.'
+  };
+
+  function initLanguageSwitch() {
+    var elements = Array.prototype.slice.call(document.querySelectorAll('[data-i18n]'))
+      .map(function (el) { return { el: el, original: el.innerHTML }; });
+    var buttons = document.querySelectorAll('.lang-btn');
+    var switchEl = document.querySelector('[data-lang-switch]');
+    if (!elements.length || !buttons.length) return;
+
+    var currentLang = 'tr';
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      elements.forEach(function (item) {
+        var key = item.el.getAttribute('data-i18n');
+        item.el.innerHTML = (lang === 'en' && TRANSLATIONS[key]) ? TRANSLATIONS[key] : item.original;
+      });
+      buttons.forEach(function (btn) {
+        btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
+      });
+      if (switchEl) switchEl.classList.toggle('is-en', lang === 'en');
+      document.documentElement.lang = lang;
+      document.title = lang === 'en' ? TITLE_EN : TITLE_TR;
+      try { localStorage.setItem('kk_lang', lang); } catch (e) { /* storage unavailable — ignore */ }
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyLanguage(currentLang === 'tr' ? 'en' : 'tr');
+      });
+    });
+
+    var saved = 'tr';
+    try { saved = localStorage.getItem('kk_lang') || 'tr'; } catch (e) { /* storage unavailable — ignore */ }
+    if (saved === 'en') applyLanguage('en');
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initWhatsAppLinks();
     initMobileNav();
     initHeaderScrollState();
     initScrollReveal();
+    initLanguageSwitch();
   });
 })();
 </script>
