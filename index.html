@@ -103,7 +103,7 @@ h1, h2, h3, p { margin: 0; }
 
 /* Header */
 .site-header {
-  position: sticky;
+  position: static;
   top: 0;
   z-index: 50;
   background: rgba(241, 234, 217, 0.9);
@@ -112,6 +112,9 @@ h1, h2, h3, p { margin: 0; }
   transition: border-color 0.3s var(--ease), background-color 0.4s var(--ease);
 }
 .site-header.is-scrolled { background: rgba(241, 234, 217, 0.55); border-bottom-color: var(--color-line); }
+@media (min-width: 900px) {
+  .site-header { position: sticky; }
+}
 
 .header-inner {
   display: flex;
