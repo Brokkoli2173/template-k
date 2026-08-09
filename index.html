@@ -131,19 +131,12 @@ h1, h2, h3, p { margin: 0; }
 }
 .logo-amp { color: var(--color-clay); font-style: italic; }
 
-.main-nav { display: none; gap: var(--space-4); margin-left: var(--space-3); font-size: 0.9rem; }
-.main-nav a { text-decoration: none; opacity: 0.8; }
-.main-nav a:hover { opacity: 1; }
-
-.header-cta { display: none; margin-left: auto; white-space: nowrap; }
-
 /* Language switch — sliding pill indicator */
 .lang-switch {
   position: relative; display: inline-flex; border: 1px solid var(--color-line); border-radius: 999px;
-  padding: 2px; margin-left: var(--space-3); flex-shrink: 0;
+  padding: 2px; flex-shrink: 0;
 }
-.lang-switch--header { display: none; }
-.mobile-nav .lang-switch { margin: 0.4rem 0; }
+.mobile-nav .lang-switch { align-self: flex-start; width: auto; margin: 0.4rem 0; }
 .lang-indicator {
   position: absolute; top: 2px; bottom: 2px; left: 2px; width: calc(50% - 2px);
   background: var(--color-ink); border-radius: 999px; z-index: 0;
@@ -185,14 +178,6 @@ h1, h2, h3, p { margin: 0; }
 }
 .mobile-nav.is-open { max-height: 320px; padding: 0 1.5rem var(--space-3); }
 .mobile-nav a { text-decoration: none; padding: 0.4rem 0; }
-
-@media (min-width: 900px) {
-  .main-nav { display: flex; }
-  .header-cta { display: inline-flex; }
-  .lang-switch--header { display: inline-flex; }
-  .nav-toggle { display: none; }
-  .mobile-nav { display: none; }
-}
 
 /* Buttons */
 .btn {
@@ -459,18 +444,6 @@ h1, h2, h3, p { margin: 0; }
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a href="#" class="logo">Kök <span class="logo-amp">&amp;</span> Kanat</a>
-    <nav class="main-nav" aria-label="Ana menü">
-      <a href="#atolye" data-i18n="nav.atolye">Atölye</a>
-      <a href="#yasemin" data-i18n="nav.yasemin">Hakkımda</a>
-      <a href="#detaylar" data-i18n="nav.detaylar">Detaylar</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <div class="lang-switch lang-switch--header" data-lang-switch role="group" aria-label="Dil / Language">
-      <span class="lang-indicator" aria-hidden="true"></span>
-      <button type="button" class="lang-btn is-active" data-lang="tr">TR</button>
-      <button type="button" class="lang-btn" data-lang="en">EN</button>
-    </div>
-    <a class="btn btn-ghost header-cta" data-wa="a" href="#">WhatsApp</a>
     <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Menüyü aç">
       <span></span><span></span><span></span>
     </button>
