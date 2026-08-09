@@ -142,6 +142,8 @@ h1, h2, h3, p { margin: 0; }
   position: relative; display: inline-flex; border: 1px solid var(--color-line); border-radius: 999px;
   padding: 2px; margin-left: var(--space-3); flex-shrink: 0;
 }
+.lang-switch--header { display: none; }
+.mobile-nav .lang-switch { margin: 0.4rem 0; }
 .lang-indicator {
   position: absolute; top: 2px; bottom: 2px; left: 2px; width: calc(50% - 2px);
   background: var(--color-ink); border-radius: 999px; z-index: 0;
@@ -187,6 +189,7 @@ h1, h2, h3, p { margin: 0; }
 @media (min-width: 900px) {
   .main-nav { display: flex; }
   .header-cta { display: inline-flex; }
+  .lang-switch--header { display: inline-flex; }
   .nav-toggle { display: none; }
   .mobile-nav { display: none; }
 }
@@ -299,7 +302,7 @@ h1, h2, h3, p { margin: 0; }
   border-left: 2px solid var(--color-clay); padding-left: var(--space-3); margin-bottom: var(--space-3);
 }
 .intro-copy p + p { margin-top: var(--space-2); }
-.lead-p::first-line { font-weight: 600; color: var(--color-ink); }
+.lead-p strong { font-weight: 600; color: var(--color-ink); }
 .intro-body { display: grid; gap: var(--space-4); }
 @media (min-width: 900px) { .intro-grid { grid-template-columns: 220px 1fr; align-items: start; } }
 @media (min-width: 700px) { .intro-body { grid-template-columns: 1.3fr 1fr; align-items: start; } }
@@ -459,11 +462,11 @@ h1, h2, h3, p { margin: 0; }
     <a href="#" class="logo">Kök <span class="logo-amp">&amp;</span> Kanat</a>
     <nav class="main-nav" aria-label="Ana menü">
       <a href="#atolye" data-i18n="nav.atolye">Atölye</a>
-      <a href="#yasemin" data-i18n="nav.yasemin">Yasemin Hanım</a>
+      <a href="#yasemin" data-i18n="nav.yasemin">Hakkımda</a>
       <a href="#detaylar" data-i18n="nav.detaylar">Detaylar</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <div class="lang-switch" data-lang-switch role="group" aria-label="Dil / Language">
+    <div class="lang-switch lang-switch--header" data-lang-switch role="group" aria-label="Dil / Language">
       <span class="lang-indicator" aria-hidden="true"></span>
       <button type="button" class="lang-btn is-active" data-lang="tr">TR</button>
       <button type="button" class="lang-btn" data-lang="en">EN</button>
@@ -475,9 +478,14 @@ h1, h2, h3, p { margin: 0; }
   </div>
   <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobil menü">
     <a href="#atolye" data-i18n="nav.atolye">Atölye</a>
-    <a href="#yasemin" data-i18n="nav.yasemin">Yasemin Hanım</a>
+    <a href="#yasemin" data-i18n="nav.yasemin">Hakkımda</a>
     <a href="#detaylar" data-i18n="nav.detaylar">Detaylar</a>
     <a href="#faq">FAQ</a>
+    <div class="lang-switch" data-lang-switch role="group" aria-label="Dil / Language">
+      <span class="lang-indicator" aria-hidden="true"></span>
+      <button type="button" class="lang-btn is-active" data-lang="tr">TR</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
     <a class="btn btn-primary" data-wa="a" href="#" data-i18n="cta.write">WhatsApp'tan Yazın</a>
   </nav>
 </header>
@@ -511,8 +519,8 @@ h1, h2, h3, p { margin: 0; }
         <div class="intro-copy">
           <span class="quote-mark" aria-hidden="true">&ldquo;</span>
           <p class="pull-quote" data-i18n="intro.quote">Bazı bölümler sessizce biter. Geride kalana dönüp bakmadan, yenisine başlamak bazen zorlaşır.</p>
-          <p class="lead-p" data-i18n="intro.p0">Belki uzun süren bir çalışma hayatı sona erdi. Belki çocuklar evden ayrıldı, başka bir şehre taşındınız ya da hayatınızda adı henüz tam konmamış yeni bir dönem başladı…</p>
-          <p data-i18n="intro.p1">Kök &amp; Kanat, tam da böyle geçiş dönemlerinde kendi hikâyenize yeniden bakabilmeniz için tasarlanmış, altı buluşmalık rehberli bir atölyedir.</p>
+          <p class="lead-p" data-i18n="intro.p0"><strong>Belki uzun süren bir çalışma hayatı sona erdi.</strong> Belki çocuklar evden ayrıldı, başka bir şehre taşındınız ya da hayatınızda adı henüz tam konmamış yeni bir dönem başladı…</p>
+          <p data-i18n="intro.p1">Kök &amp; Kanat, tam da böyle geçiş dönemlerinde kendi hikâyenize yeniden bakabilmeniz için tasarlanmış, altı buluşmalık yapılandırılmış bir atölyedir.</p>
           <p data-i18n="intro.p2">Küçük bir grupla birlikte; geride bıraktıklarınızı fark etmek, bugün durduğunuz yeri anlamak ve bundan sonrasına daha bilinçli bakabilmek için kendinize zaman ayırırsınız.</p>
         </div>
         <figure class="intro-image photo-frame">
@@ -608,14 +616,13 @@ h1, h2, h3, p { margin: 0; }
         <p class="section-label"><span class="section-label-text" data-i18n="label.rehberiniz">Ben Kimim?</span></p>
         <h2 class="section-title" data-i18n="about.greeting">Merhaba, ben Yasemin.</h2>
         <p class="about-title" data-i18n="about.title">Eğitim Bilimci, Kök &amp; Kanat'ın Kurucusu ve Atölye Yürütücüsüyüm.</p>
-        <p class="lead-p" data-i18n="about.p1">Uzun yıllardır insanlarla, ailelerle ve onların yaşam hikâyeleriyle çalışıyorum. Köln Üniversitesi'nde tamamladığım pedagoji eğitimimle başlayan mesleki yolum; göçmen ailelerle yaptığım çalışmalar, sosyal ve pedagojik danışmanlık, üç yıllık Sistemik Terapi ve Aile Terapisi eğitimim ve bireysel danışmanlık deneyimlerimle şekillendi.</p>
-        <p data-i18n="about.p2">Kök &amp; Kanat biraz da bu yolculuktan doğdu.</p>
+        <p class="lead-p" data-i18n="about.p1"><strong>Uzun yıllardır insanlarla, ailelerle ve onların yaşam hikâyeleriyle çalışıyorum.</strong> Köln Üniversitesi'nde tamamladığım pedagoji eğitimimle başlayan mesleki yolum; göçmen ailelerle yaptığım çalışmalar, sosyal ve pedagojik danışmanlık, üç yıllık Sistemik Terapi ve Aile Terapisi eğitimim ve bireysel danışmanlık deneyimlerimle şekillendi.</p>
       </div>
     </div>
     <div class="wrap">
       <div class="about-path">
         <h3 class="about-path-title" data-i18n="about.pathTitle">Beni buraya getiren yol</h3>
-        <p class="lead-p" data-i18n="about.path.p1">Yıllar boyunca insanların hayatlarının farklı dönemlerine eşlik ederken bir şeyi tekrar tekrar gördüm: Bazen ihtiyacımız olan, bir başkasının bize hangi yoldan gitmemiz gerektiğini söylemesi değil; durabileceğimiz, kendi hikâyemize yeniden bakabileceğimiz ve kendi cevaplarımıza yaklaşabileceğimiz bir alan.</p>
+        <p class="lead-p" data-i18n="about.path.p1"><strong>Yıllar boyunca insanların hayatlarının farklı dönemlerine eşlik ederken bir şeyi tekrar tekrar gördüm:</strong> Bazen ihtiyacımız olan, bir başkasının bize hangi yoldan gitmemiz gerektiğini söylemesi değil; durabileceğimiz, kendi hikâyemize yeniden bakabileceğimiz ve kendi cevaplarımıza yaklaşabileceğimiz bir alan.</p>
         <p data-i18n="about.path.p2">Kök &amp; Kanat biraz da bu düşünceden doğdu.</p>
         <p data-i18n="about.path.p3">Bu süreçte benim rolüm, yaratıcı çalışmalar, sorular ve paylaşımlar için oluşturduğum yapı içinde kendi hikâyenize yeniden bakabileceğiniz bir alan açmak. Hangi yoldan gitmeniz gerektiğini söylemek değil.</p>
         <p data-i18n="about.path.p4">Kendi yaşamımda da durmayı, yeniden bakmayı ve yön değiştirmeyi deneyimlemiş biri olarak, altı buluşma boyunca bu sürece eşlik ediyorum.</p>
@@ -726,9 +733,9 @@ h1, h2, h3, p { margin: 0; }
     <div class="footer-legal">
       <p>Kök &amp; Kanat</p>
       <p>Zühtüpaşa Mah., Şefikbey Sk., Archerson Köşkü No:3 Oda No:301 · Kadıköy/İstanbul</p>
-      <p data-i18n="footer.addressCode">Adres Kodu: 2273816203</p>
       <p data-i18n="footer.taxLine">Vergi Dairesi: Göztepe Vergi Dairesi Müdürlüğü</p>
-      <p><span data-i18n="footer.email">E-posta</span>: <a href="mailto:yasemin@kokvekanat.com">yasemin@kokvekanat.com</a> · <span data-i18n="footer.tel">Tel</span>: <a href="tel:+905462911590">0546 291 15 90</a></p>
+      <p><span data-i18n="footer.email">E-posta</span>: <a href="mailto:yasemin@kokvekanat.com">yasemin@kokvekanat.com</a></p>
+      <p><span data-i18n="footer.tel">Tel</span>: <a href="tel:+905462911590">0546 291 15 90</a></p>
     </div>
     <div class="footer-links">
       <a href="#" data-wa="b" data-i18n="cta.justOpen">Sadece WhatsApp'ı aç</a>
@@ -997,7 +1004,7 @@ h1, h2, h3, p { margin: 0; }
 
   var TRANSLATIONS = {
     'nav.atolye': 'Workshop',
-    'nav.yasemin': 'Yasemin Hanım',
+    'nav.yasemin': 'About Me',
     'nav.detaylar': 'Details',
     'cta.info': 'Ask on WhatsApp',
     'cta.explore': 'Explore the workshop ↓',
@@ -1007,9 +1014,9 @@ h1, h2, h3, p { margin: 0; }
     'hero.title': 'You can\u2019t spread your wings without knowing your roots.',
     'hero.lede': 'We don\u2019t always know how to move into the next chapter while one is closing. Kök &amp; Kanat is a six-session guided workshop \u2014 time for yourself to pause, look back on what\u2019s behind you, and move forward with more clarity.',
     'label.giris': 'Introduction',
-    'intro.p0': 'Maybe a long career came to an end. Maybe the kids moved out, you moved to a new city, or a new chapter began in your life that doesn\u2019t have a name yet\u2026',
+    'intro.p0': '<strong>Maybe a long career came to an end.</strong> Maybe the kids moved out, you moved to a new city, or a new chapter began in your life that doesn\u2019t have a name yet\u2026',
     'intro.quote': 'Some chapters end quietly. Without looking back on what\u2019s behind you, starting the next one can be hard.',
-    'intro.p1': 'Kök &amp; Kanat is a guided, six-session workshop designed to help you look at your own story again during exactly this kind of transition.',
+    'intro.p1': 'Kök &amp; Kanat is a structured, six-session workshop designed to help you look at your own story again during exactly this kind of transition.',
     'intro.p2': 'Together with a small group, you take the time to notice what you\u2019re leaving behind, understand where you stand today, and move forward with more clarity.',
     'intro.imgCaption': 'Writing down, on a notebook page, what you\u2019re carrying that week.',
     'label.yolculuk': 'The Workshop Journey',
@@ -1036,10 +1043,9 @@ h1, h2, h3, p { margin: 0; }
     'about.caption': 'Yasemin Bulut<br>Education Scientist &amp; Founder of Kök &amp; Kanat',
     'about.greeting': 'Hi, I\u2019m Yasemin.',
     'about.title': 'I\u2019m an education scientist, the founder of Kök &amp; Kanat, and the one who leads the workshop.',
-    'about.p1': 'I\u2019ve spent many years working with people, families, and their life stories. My professional path began with a degree in pedagogy from the University of Cologne, and was shaped by my work with immigrant families, social and pedagogical counseling, three years of training in systemic and family therapy, and my experience in individual counseling.',
-    'about.p2': 'Kök &amp; Kanat was born, in part, out of that journey.',
+    'about.p1': '<strong>I\u2019ve spent many years working with people, families, and their life stories.</strong> My professional path began with a degree in pedagogy from the University of Cologne, and was shaped by my work with immigrant families, social and pedagogical counseling, three years of training in systemic and family therapy, and my experience in individual counseling.',
     'about.pathTitle': 'The road that brought me here',
-    'about.path.p1': 'Over the years, accompanying people through different chapters of their lives, I kept seeing the same thing: sometimes what we need isn\u2019t someone telling us which way to go \u2014 it\u2019s a space where we can pause, look at our own story again, and get closer to our own answers.',
+    'about.path.p1': '<strong>Over the years, accompanying people through different chapters of their lives, I kept seeing the same thing:</strong> sometimes what we need isn\u2019t someone telling us which way to go \u2014 it\u2019s a space where we can pause, look at our own story again, and get closer to our own answers.',
     'about.path.p2': 'Kök &amp; Kanat was born, in part, out of that thought.',
     'about.path.p3': 'My role in this process is to open up a space \u2014 through creative exercises, questions, and sharing \u2014 where you can look at your own story again. Not to tell you which way to go.',
     'about.path.p4': 'Having experienced pausing, looking again, and changing direction in my own life, I accompany this process with you over six sessions.',
@@ -1066,7 +1072,6 @@ h1, h2, h3, p { margin: 0; }
     'finalcta.title': 'We begin on September 20th.',
     'finalcta.p': 'The first group is limited to 8\u201312 people. Message me on WhatsApp with any questions or to register.',
     'footer.tagline': 'Touch your story.',
-    'footer.addressCode': 'Address Code: 2273816203',
     'footer.taxLine': 'Tax Office: Göztepe Tax Office',
     'footer.email': 'Email',
     'footer.tel': 'Phone',
@@ -1079,7 +1084,7 @@ h1, h2, h3, p { margin: 0; }
     var elements = Array.prototype.slice.call(document.querySelectorAll('[data-i18n]'))
       .map(function (el) { return { el: el, original: el.innerHTML }; });
     var buttons = document.querySelectorAll('.lang-btn');
-    var switchEl = document.querySelector('[data-lang-switch]');
+    var switchEls = document.querySelectorAll('[data-lang-switch]');
     if (!elements.length || !buttons.length) return;
 
     var currentLang = 'tr';
@@ -1093,7 +1098,7 @@ h1, h2, h3, p { margin: 0; }
       buttons.forEach(function (btn) {
         btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
       });
-      if (switchEl) switchEl.classList.toggle('is-en', lang === 'en');
+      switchEls.forEach(function (el) { el.classList.toggle('is-en', lang === 'en'); });
       document.documentElement.lang = lang;
       document.title = lang === 'en' ? TITLE_EN : TITLE_TR;
       try { localStorage.setItem('kk_lang', lang); } catch (e) { /* storage unavailable — ignore */ }
