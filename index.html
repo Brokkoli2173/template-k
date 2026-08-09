@@ -109,14 +109,15 @@ h1, h2, h3, p { margin: 0; }
   background: rgba(241, 234, 217, 0.9);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid transparent;
-  transition: border-color 0.3s var(--ease);
+  transition: border-color 0.3s var(--ease), background-color 0.4s var(--ease);
 }
-.site-header.is-scrolled { border-bottom-color: var(--color-line); }
+.site-header.is-scrolled { background: rgba(241, 234, 217, 0.55); border-bottom-color: var(--color-line); }
 
 .header-inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-3);
+  gap: 0.6rem var(--space-3);
   padding-top: 1.1rem;
   padding-bottom: 1.1rem;
 }
@@ -131,12 +132,18 @@ h1, h2, h3, p { margin: 0; }
 }
 .logo-amp { color: var(--color-clay); font-style: italic; }
 
+.main-nav {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem;
+  font-size: 0.9rem; margin-left: 0; order: 3; flex-basis: 100%;
+}
+.main-nav a { text-decoration: none; opacity: 0.8; white-space: nowrap; }
+.main-nav a:hover { opacity: 1; }
+
 /* Language switch — sliding pill indicator */
 .lang-switch {
   position: relative; display: inline-flex; border: 1px solid var(--color-line); border-radius: 999px;
-  padding: 2px; flex-shrink: 0;
+  padding: 2px; flex-shrink: 0; margin-left: auto;
 }
-.mobile-nav .lang-switch { align-self: flex-start; width: auto; margin: 0.4rem 0; }
 .lang-indicator {
   position: absolute; top: 2px; bottom: 2px; left: 2px; width: calc(50% - 2px);
   background: var(--color-ink); border-radius: 999px; z-index: 0;
@@ -156,28 +163,10 @@ h1, h2, h3, p { margin: 0; }
   .lang-indicator, .lang-btn { transition: none; }
 }
 
-.nav-toggle {
-  margin-left: auto;
-  width: 36px; height: 28px;
-  background: none; border: none;
-  display: flex; flex-direction: column; justify-content: space-between;
-  cursor: pointer; padding: 2px;
+@media (min-width: 600px) {
+  .main-nav { order: 0; flex-basis: auto; margin-left: var(--space-3); }
+  .lang-switch { margin-left: var(--space-3); }
 }
-.nav-toggle span {
-  display: block; height: 2px; background: var(--color-ink); border-radius: 2px;
-  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
-}
-.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(13px) rotate(45deg); }
-.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-13px) rotate(-45deg); }
-
-.mobile-nav {
-  display: flex; flex-direction: column; gap: var(--space-2);
-  padding: 0 1.5rem; max-height: 0; overflow: hidden;
-  transition: max-height 0.35s var(--ease), padding 0.35s var(--ease);
-}
-.mobile-nav.is-open { max-height: 320px; padding: 0 1.5rem var(--space-3); }
-.mobile-nav a { text-decoration: none; padding: 0.4rem 0; }
 
 /* Buttons */
 .btn {
@@ -435,6 +424,43 @@ h1, h2, h3, p { margin: 0; }
   text-decoration: none; font-weight: 600; box-shadow: 0 8px 24px rgba(43, 36, 24, 0.25);
 }
 @media (min-width: 900px) { .mobile-sticky-cta { display: none; } }
+
+/* Fixed hamburger menu — independent of the header, always pinned to the viewport */
+.fixed-menu-toggle {
+  position: fixed; top: 1rem; right: 1rem; z-index: 90;
+  width: 44px; height: 44px; border-radius: 50%; border: none;
+  background: var(--color-ink); box-shadow: 0 8px 20px rgba(43, 36, 24, 0.35);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  cursor: pointer;
+}
+.fixed-menu-toggle span {
+  display: block; width: 18px; height: 2px; background: var(--color-paper); border-radius: 2px;
+  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+.fixed-menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.fixed-menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.fixed-menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.fixed-menu-panel {
+  position: fixed; top: 4.25rem; right: 1rem; z-index: 89;
+  min-width: 200px; background: var(--color-paper); border-radius: 4px;
+  box-shadow: 0 20px 44px -14px rgba(43, 36, 24, 0.45);
+  padding: 0.75rem;
+  display: flex; flex-direction: column; gap: 0.35rem;
+  opacity: 0; transform: translateY(-8px) scale(0.98); pointer-events: none;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.fixed-menu-panel.is-open { opacity: 1; transform: none; pointer-events: auto; }
+.fixed-menu-panel a { text-decoration: none; padding: 0.5rem 0.6rem; border-radius: 3px; color: var(--color-ink); }
+.fixed-menu-panel a:hover { background: var(--color-paper-alt); }
+.fixed-menu-panel .lang-switch { align-self: flex-start; margin: 0.3rem 0.6rem 0; }
+@media (prefers-reduced-motion: reduce) {
+  .fixed-menu-toggle span, .fixed-menu-panel { transition: none; }
+}
+@media (min-width: 900px) {
+  .fixed-menu-toggle { display: none; }
+  .fixed-menu-panel { display: none; }
+}
 </style>
 </head>
 <body>
@@ -444,22 +470,18 @@ h1, h2, h3, p { margin: 0; }
 <header class="site-header" data-header>
   <div class="wrap header-inner">
     <a href="#" class="logo">Kök <span class="logo-amp">&amp;</span> Kanat</a>
-    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Menüyü aç">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobil menü">
-    <a href="#atolye" data-i18n="nav.atolye">Atölye</a>
-    <a href="#yasemin" data-i18n="nav.yasemin">Hakkımda</a>
-    <a href="#detaylar" data-i18n="nav.detaylar">Detaylar</a>
-    <a href="#faq">FAQ</a>
+    <nav class="main-nav" aria-label="Ana menü">
+      <a href="#atolye" data-i18n="nav.atolye">Atölye</a>
+      <a href="#yasemin" data-i18n="nav.yasemin">Hakkımda</a>
+      <a href="#detaylar" data-i18n="nav.detaylar">Detaylar</a>
+      <a href="#faq">FAQ</a>
+    </nav>
     <div class="lang-switch" data-lang-switch role="group" aria-label="Dil / Language">
       <span class="lang-indicator" aria-hidden="true"></span>
       <button type="button" class="lang-btn is-active" data-lang="tr">TR</button>
       <button type="button" class="lang-btn" data-lang="en">EN</button>
     </div>
-    <a class="btn btn-primary" data-wa="a" href="#" data-i18n="cta.write">WhatsApp'tan Yazın</a>
-  </nav>
+  </div>
 </header>
 
 <main id="ana-icerik">
@@ -721,6 +743,22 @@ h1, h2, h3, p { margin: 0; }
 
 <a class="mobile-sticky-cta" data-wa="a" href="#" data-i18n="cta.write">WhatsApp'tan Yazın</a>
 
+<!-- Fixed hamburger menu — position:fixed, independent of the header, always on screen -->
+<button type="button" class="fixed-menu-toggle" data-fixed-menu-toggle aria-expanded="false" aria-controls="fixed-menu-panel" aria-label="Menüyü aç">
+  <span></span><span></span><span></span>
+</button>
+<nav id="fixed-menu-panel" class="fixed-menu-panel" data-fixed-menu-panel aria-label="Sabit menü">
+  <a href="#atolye" data-i18n="nav.atolye">Atölye</a>
+  <a href="#yasemin" data-i18n="nav.yasemin">Hakkımda</a>
+  <a href="#detaylar" data-i18n="nav.detaylar">Detaylar</a>
+  <a href="#faq">FAQ</a>
+  <div class="lang-switch" data-lang-switch role="group" aria-label="Dil / Language">
+    <span class="lang-indicator" aria-hidden="true"></span>
+    <button type="button" class="lang-btn is-active" data-lang="tr">TR</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+  </div>
+</nav>
+
 <!-- Legal document modals: kept Turkish-only, as these are legally binding texts -->
 <div class="modal-overlay" id="modal-privacy" data-modal-overlay aria-hidden="true">
   <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title">
@@ -914,24 +952,6 @@ h1, h2, h3, p { margin: 0; }
     });
   }
 
-  function initMobileNav() {
-    var toggle = document.querySelector('[data-nav-toggle]');
-    var nav = document.querySelector('[data-mobile-nav]');
-    if (!toggle || !nav) return;
-
-    toggle.addEventListener('click', function () {
-      var isOpen = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    nav.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
   function initHeaderScrollState() {
     var header = document.querySelector('[data-header]');
     if (!header) return;
@@ -940,6 +960,43 @@ h1, h2, h3, p { margin: 0; }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+  }
+
+  /* ---------------------------------------------
+   * Fixed hamburger menu — position:fixed, stays
+   * pinned to the viewport regardless of scroll.
+   * ------------------------------------------- */
+  function initFixedMenu() {
+    var toggle = document.querySelector('[data-fixed-menu-toggle]');
+    var panel = document.querySelector('[data-fixed-menu-panel]');
+    if (!toggle || !panel) return;
+
+    function close() {
+      panel.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    function open() {
+      panel.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    toggle.addEventListener('click', function () {
+      if (panel.classList.contains('is-open')) close(); else open();
+    });
+
+    panel.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', close);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!panel.classList.contains('is-open')) return;
+      if (panel.contains(e.target) || toggle.contains(e.target)) return;
+      close();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close();
+    });
   }
 
   function initScrollReveal() {
@@ -1139,8 +1196,8 @@ h1, h2, h3, p { margin: 0; }
 
   document.addEventListener('DOMContentLoaded', function () {
     initWhatsAppLinks();
-    initMobileNav();
     initHeaderScrollState();
+    initFixedMenu();
     initScrollReveal();
     initLanguageSwitch();
     initLegalModals();
