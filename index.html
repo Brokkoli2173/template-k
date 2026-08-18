@@ -367,6 +367,18 @@ h1, h2, h3, p { margin: 0; }
 .footer-grid { display: grid; gap: var(--space-4); }
 .footer-logo { font-size: 1.1rem; margin-bottom: 0.3rem; }
 .footer-note { color: var(--color-sage); }
+.footer-social { display: flex; gap: 0.75rem; margin-top: var(--space-3); }
+.social-btn {
+  width: 46px; height: 46px; border-radius: 50%; background: var(--color-ink); color: var(--color-paper);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  transition: background-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.social-btn svg { width: 22px; height: 22px; }
+.social-btn:hover { background: var(--color-clay); transform: translateY(-2px); }
+.social-btn--sm { width: 34px; height: 34px; }
+.social-btn--sm svg { width: 17px; height: 17px; }
+.nav-social { display: flex; gap: 0.5rem; }
+.fixed-menu-panel .nav-social { margin: 0.3rem 0.6rem 0; }
 .footer-legal p { margin: 0.2rem 0; color: rgba(43, 36, 24, 0.75); }
 .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
 .footer-links a { text-decoration: none; opacity: 0.85; }
@@ -484,6 +496,21 @@ h1, h2, h3, p { margin: 0; }
       <a href="#yasemin" data-i18n="nav.yasemin">Hakkımda</a>
       <a href="#detaylar" data-i18n="nav.detaylar">Detaylar</a>
       <a href="#faq">FAQ</a>
+      <div class="nav-social">
+        <a href="#" class="social-btn social-btn--sm" data-wa="b" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2.5C6.75 2.5 2.5 6.75 2.5 12c0 1.85.53 3.58 1.44 5.04L2.6 21.4l4.48-1.3A9.45 9.45 0 0 0 12 21.5c5.25 0 9.5-4.25 9.5-9.5S17.25 2.5 12 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M8.3 8.4c.15-.35.4-.35.65-.35h.5c.18 0 .4-.03.6.45.24.6.8 2 .87 2.15.08.15.13.32.02.5-.1.2-.16.32-.32.5-.16.17-.33.4-.47.53-.16.15-.32.32-.14.63.18.32.8 1.32 1.72 2.14 1.18 1.05 2.18 1.38 2.5 1.53.32.15.5.13.7-.08.2-.2.83-.97 1.05-1.3.22-.32.44-.27.72-.16.3.1 1.9.9 2.22 1.06.32.16.53.24.6.38.08.15.08.86-.2 1.68-.28.82-1.62 1.6-2.24 1.7-.6.1-1.3.15-2.1-.13-.5-.17-1.13-.4-1.95-.77-3.4-1.5-5.6-4.9-5.78-5.13-.16-.24-1.4-1.86-1.4-3.56 0-1.7.9-2.53 1.22-2.87Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/kokvekanat.atolye" class="social-btn social-btn--sm" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="4.4" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
     </nav>
     <div class="lang-switch" data-lang-switch role="group" aria-label="Dil / Language">
       <span class="lang-indicator" aria-hidden="true"></span>
@@ -731,6 +758,21 @@ h1, h2, h3, p { margin: 0; }
     <div>
       <p class="logo footer-logo">Kök &amp; Kanat</p>
       <p class="footer-note" data-i18n="footer.tagline">Hikâyene dokun.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn" data-wa="b" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2.5C6.75 2.5 2.5 6.75 2.5 12c0 1.85.53 3.58 1.44 5.04L2.6 21.4l4.48-1.3A9.45 9.45 0 0 0 12 21.5c5.25 0 9.5-4.25 9.5-9.5S17.25 2.5 12 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M8.3 8.4c.15-.35.4-.35.65-.35h.5c.18 0 .4-.03.6.45.24.6.8 2 .87 2.15.08.15.13.32.02.5-.1.2-.16.32-.32.5-.16.17-.33.4-.47.53-.16.15-.32.32-.14.63.18.32.8 1.32 1.72 2.14 1.18 1.05 2.18 1.38 2.5 1.53.32.15.5.13.7-.08.2-.2.83-.97 1.05-1.3.22-.32.44-.27.72-.16.3.1 1.9.9 2.22 1.06.32.16.53.24.6.38.08.15.08.86-.2 1.68-.28.82-1.62 1.6-2.24 1.7-.6.1-1.3.15-2.1-.13-.5-.17-1.13-.4-1.95-.77-3.4-1.5-5.6-4.9-5.78-5.13-.16-.24-1.4-1.86-1.4-3.56 0-1.7.9-2.53 1.22-2.87Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/kokvekanat.atolye" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="4.4" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
     </div>
     <div class="footer-legal">
       <p>Kök &amp; Kanat</p>
@@ -740,8 +782,6 @@ h1, h2, h3, p { margin: 0; }
       <p><span data-i18n="footer.tel">Tel</span>: <a href="tel:+905462911590">0546 291 15 90</a></p>
     </div>
     <div class="footer-links">
-      <a href="#" data-wa="b" data-i18n="cta.justOpen">Sadece WhatsApp'ı aç</a>
-      <a href="https://www.instagram.com/kokvekanat.atolye" target="_blank" rel="noopener noreferrer">Instagram: @kokvekanat.atolye</a>
       <button type="button" class="footer-link-btn" data-open-modal="privacy" data-i18n="footer.privacy">Gizlilik Politikası</button>
       <button type="button" class="footer-link-btn" data-open-modal="kvkk" data-i18n="footer.kvkk">KVKK Aydınlatma Metni</button>
     </div>
@@ -761,6 +801,21 @@ h1, h2, h3, p { margin: 0; }
   <a href="#yasemin" data-i18n="nav.yasemin">Hakkımda</a>
   <a href="#detaylar" data-i18n="nav.detaylar">Detaylar</a>
   <a href="#faq">FAQ</a>
+  <div class="nav-social">
+    <a href="#" class="social-btn social-btn--sm" data-wa="b" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2.5C6.75 2.5 2.5 6.75 2.5 12c0 1.85.53 3.58 1.44 5.04L2.6 21.4l4.48-1.3A9.45 9.45 0 0 0 12 21.5c5.25 0 9.5-4.25 9.5-9.5S17.25 2.5 12 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M8.3 8.4c.15-.35.4-.35.65-.35h.5c.18 0 .4-.03.6.45.24.6.8 2 .87 2.15.08.15.13.32.02.5-.1.2-.16.32-.32.5-.16.17-.33.4-.47.53-.16.15-.32.32-.14.63.18.32.8 1.32 1.72 2.14 1.18 1.05 2.18 1.38 2.5 1.53.32.15.5.13.7-.08.2-.2.83-.97 1.05-1.3.22-.32.44-.27.72-.16.3.1 1.9.9 2.22 1.06.32.16.53.24.6.38.08.15.08.86-.2 1.68-.28.82-1.62 1.6-2.24 1.7-.6.1-1.3.15-2.1-.13-.5-.17-1.13-.4-1.95-.77-3.4-1.5-5.6-4.9-5.78-5.13-.16-.24-1.4-1.86-1.4-3.56 0-1.7.9-2.53 1.22-2.87Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/kokvekanat.atolye" class="social-btn social-btn--sm" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5.5" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="12" cy="12" r="4.4" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor"/>
+      </svg>
+    </a>
+  </div>
   <div class="lang-switch" data-lang-switch role="group" aria-label="Dil / Language">
     <span class="lang-indicator" aria-hidden="true"></span>
     <button type="button" class="lang-btn is-active" data-lang="tr">TR</button>
